@@ -5,7 +5,7 @@ Learning game development with Godot with the 20 games challenge instead of plun
 I will do all games and log what I learned in a README file for each game
 
 ## Games
- - [01: Pong](01\pong\README.md)
+ - [01: Pong](01/pong/README.md)
  - 01: Flappy Bird
  - 02: Breakout
  - 02: Jetpack Joyride
