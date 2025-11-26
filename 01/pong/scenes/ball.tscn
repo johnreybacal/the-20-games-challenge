@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6xohchho5exu"]
+
+[ext_resource type="Script" uid="uid://ctxb66efg7jww" path="res://01/pong/scripts/ball.gd" id="1_aiqhu"]
+[ext_resource type="AudioStream" uid="uid://bbdfvusuug33n" path="res://01/pong/assets/tennis-ball-hit-386155.mp3" id="2_w76b3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w76b3"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_3jrup"]
+offsets = PackedFloat32Array(0.29746836, 0.31012657, 0.5253165)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0, 0.6509804, 0.6509804, 0.6509804, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aiqhu"]
+gradient = SubResource("Gradient_3jrup")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Ball" type="Area2D" groups=["ball"]]
+script = ExtResource("1_aiqhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w76b3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.3841858e-07, -2.3841858e-07)
+scale = Vector2(0.28125, 0.28125)
+texture = SubResource("GradientTexture2D_aiqhu")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_w76b3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

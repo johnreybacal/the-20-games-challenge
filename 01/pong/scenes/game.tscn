@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://ebkacjseggdm"]
+
+[ext_resource type="PackedScene" uid="uid://c6uc0ofkj3foc" path="res://01/pong/scenes/paddle.tscn" id="1_0nbmt"]
+[ext_resource type="Script" uid="uid://ig1ihlps461v" path="res://01/pong/scripts/play_area.gd" id="1_4vx4o"]
+[ext_resource type="Script" uid="uid://66oeagmj30xb" path="res://01/pong/scripts/game_manager.gd" id="1_yhhs0"]
+[ext_resource type="PackedScene" uid="uid://rjc47ep4il1w" path="res://01/pong/scenes/hud.tscn" id="2_ia06j"]
+[ext_resource type="PackedScene" uid="uid://dcb5ud5vbqqyh" path="res://01/pong/scenes/wall.tscn" id="2_th3uo"]
+[ext_resource type="PackedScene" uid="uid://c6xohchho5exu" path="res://01/pong/scenes/ball.tscn" id="3_q4sla"]
+
+[sub_resource type="Gradient" id="Gradient_ia06j"]
+offsets = PackedFloat32Array(0, 0.9936709, 1)
+colors = PackedColorArray(0.12162051, 0.2778406, 0.121495016, 1, 0.005528271, 0.01260066, 0.010421634, 1, 0.00014651388, 0.00030480136, 0.005272534, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uasa8"]
+gradient = SubResource("Gradient_ia06j")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(2.705, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4sla"]
+size = Vector2(288, 162)
+
+[node name="Node" type="Node"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-7.6293945e-06, -0.4999981)
+scale = Vector2(4.5000005, 2.6718752)
+texture = SubResource("GradientTexture2D_uasa8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_ia06j")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("play_area", "hud", "p1", "p2")]
+script = ExtResource("1_yhhs0")
+play_area = NodePath("../PlayArea")
+hud = NodePath("../CanvasLayer/HUD")
+p1 = NodePath("../Paddle")
+p2 = NodePath("../Paddle2")
+ball_scene = ExtResource("3_q4sla")
+
+[node name="PlayArea" type="Area2D" parent="."]
+script = ExtResource("1_4vx4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea"]
+visible = false
+shape = SubResource("RectangleShape2D_q4sla")
+
+[node name="Paddle" parent="." instance=ExtResource("1_0nbmt")]
+position = Vector2(-142, 0)
+
+[node name="Paddle2" parent="." instance=ExtResource("1_0nbmt")]
+position = Vector2(142, 0)
+is_p1 = false
+
+[node name="Wall" parent="." instance=ExtResource("2_th3uo")]
+position = Vector2(0, -83)
+scale = Vector2(4.5199995, 1)
+
+[node name="Wall2" parent="." instance=ExtResource("2_th3uo")]
+position = Vector2(-1, 83)
+scale = Vector2(4.5199995, 1)
+
+[connection signal="area_exited" from="PlayArea" to="PlayArea" method="_on_area_exited"]
