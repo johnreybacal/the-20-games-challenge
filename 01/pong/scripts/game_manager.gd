@@ -5,6 +5,7 @@ extends Node
 @export var p1: Paddle = null
 @export var p2: Paddle = null
 @export var ball_scene: PackedScene = null
+@export var confetti_scene: PackedScene = null
 @export var is_p2_ai = false
 
 var p1_score = 0
@@ -86,6 +87,7 @@ func move_ai(delta: float, target = null):
 
 
 func _on_play_area_scored(player: int) -> void:
+    spawn_confetti(player)
     if player == 1:
         p1_score += rally
         hud.set_p1_score(p1_score)
@@ -103,6 +105,15 @@ func _on_play_area_scored(player: int) -> void:
 
     call_deferred("spawn_ball")
 
+func spawn_confetti(player: int):
+    var confetti: GPUParticles2D = confetti_scene.instantiate()
+    confetti.global_position = Vector2(ball.global_position.x + (-10 if player == 1 else 10), ball.global_position.y)
+    confetti.one_shot = true
+    confetti.finished.connect(confetti.queue_free)
+    (confetti.process_material as ParticleProcessMaterial).direction = Vector3(-1 if player == 1 else 1, -1, 0)
+    add_child(confetti)
+        
+    
 func spawn_ball():
     ball = ball_scene.instantiate()
     ball.direction = Vector2(1 if rally_starter == p1 else -1, randf_range(-0.5, 0.5)).normalized()

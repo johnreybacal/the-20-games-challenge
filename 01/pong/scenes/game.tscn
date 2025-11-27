@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ebkacjseggdm"]
+[gd_scene load_steps=13 format=3 uid="uid://ebkacjseggdm"]
 
 [ext_resource type="PackedScene" uid="uid://c6uc0ofkj3foc" path="res://01/pong/scenes/paddle.tscn" id="1_0nbmt"]
 [ext_resource type="Script" uid="uid://ig1ihlps461v" path="res://01/pong/scripts/play_area.gd" id="1_4vx4o"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rjc47ep4il1w" path="res://01/pong/scenes/hud.tscn" id="2_ia06j"]
 [ext_resource type="PackedScene" uid="uid://dcb5ud5vbqqyh" path="res://01/pong/scenes/wall.tscn" id="2_th3uo"]
 [ext_resource type="PackedScene" uid="uid://c6xohchho5exu" path="res://01/pong/scenes/ball.tscn" id="3_q4sla"]
+[ext_resource type="PackedScene" uid="uid://cpowrt1ewu5f7" path="res://01/pong/scenes/confetti.tscn" id="4_uasa8"]
 
 [sub_resource type="Gradient" id="Gradient_ia06j"]
 offsets = PackedFloat32Array(0, 0.9936709, 1)
@@ -49,6 +50,7 @@ hud = NodePath("../CanvasLayer/HUD")
 p1 = NodePath("../Paddle")
 p2 = NodePath("../Paddle2")
 ball_scene = ExtResource("3_q4sla")
+confetti_scene = ExtResource("4_uasa8")
 is_p2_ai = true
 
 [node name="PlayArea" type="Area2D" parent="."]

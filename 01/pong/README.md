@@ -38,8 +38,8 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - ~~Pause menu~~
    - ~~Resume~~
    - ~~Reset~~
- - Confetti particles on score
-   - Sound effects
+ - ~~Confetti particles on score~~
+   - ~~Sound effects~~
 
 ## Groups
  - paddle
@@ -76,7 +76,10 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - Mapped `01_pong_reset` to reset the game
  - Implement AI for P2 to follow ball
    - only set axis to move towards to reuse Paddle's `_process` and boundedness
+ - Added confetti on score. 
 
 ## Credits
 
 - Tennis ball hit sound: Sound Effect by <a href="https://pixabay.com/users/dragon-studio-38165424/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=386155">DRAGON-STUDIO</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=386155">Pixabay</a>
+- Score sound: Sound Effect by <a href="https://pixabay.com/users/floraphonic-38928062/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=224403">floraphonic</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=224403">Pixabay</a>
+- Confetti particle setup guide: https://gist.github.com/benmccown/52eb2d9b0a2899fe4d6d6aea6514eafb
