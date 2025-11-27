@@ -23,6 +23,7 @@ script = ExtResource("1_aiqhu")
 shape = SubResource("CircleShape2D_w76b3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.28125, 0.28125)
 texture = SubResource("GradientTexture2D_aiqhu")

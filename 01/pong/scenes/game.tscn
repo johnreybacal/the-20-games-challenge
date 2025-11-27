@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ebkacjseggdm"]
+[gd_scene load_steps=12 format=3 uid="uid://ebkacjseggdm"]
 
 [ext_resource type="PackedScene" uid="uid://c6uc0ofkj3foc" path="res://01/pong/scenes/paddle.tscn" id="1_0nbmt"]
 [ext_resource type="Script" uid="uid://ig1ihlps461v" path="res://01/pong/scripts/play_area.gd" id="1_4vx4o"]
@@ -19,6 +19,13 @@ fill_to = Vector2(2.705, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4sla"]
 size = Vector2(288, 162)
+
+[sub_resource type="Gradient" id="Gradient_uasa8"]
+offsets = PackedFloat32Array(0.9936306, 1)
+colors = PackedColorArray(0, 0, 0, 0.21568628, 1, 1, 1, 0.2)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e80p0"]
+gradient = SubResource("Gradient_uasa8")
 
 [node name="Node" type="Node"]
 
@@ -64,5 +71,10 @@ scale = Vector2(4.5199995, 1)
 [node name="Wall2" parent="." instance=ExtResource("2_th3uo")]
 position = Vector2(-1, 83)
 scale = Vector2(4.5199995, 1)
+
+[node name="Net" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.3372549)
+scale = Vector2(0.025, 2.6)
+texture = SubResource("GradientTexture2D_e80p0")
 
 [connection signal="area_exited" from="PlayArea" to="PlayArea" method="_on_area_exited"]
