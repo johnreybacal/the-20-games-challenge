@@ -13,6 +13,19 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
    - execution came from `_on_area_exited` of PlayArea
       - Scene tree is locked
    - `spawn_ball` has `add_child` which tries to modify the scene tree while locked
+ - Normalizing vector length with `normalize`
+ 
+    | Input Vector2 | Length Before | Normalized Output | Length After           |
+    |---------------|---------------|-------------------|------------------------|
+    | (1, 1)        | 1.4142        | (0.7071, 0.7071)  | 1.0                    |
+    | (2, 0)        | 2.0           | (1.0, 0.0)        | 1.0                    |
+    | (0, -3)       | 3.0           | (0.0, -1.0)       | 1.0                    |
+    | (-4, 3)       | 5.0           | (-0.8, 0.6)       | 1.0                    |
+    | (0.2, 0.6)    | 0.6325        | (0.3162, 0.9487)  | 1.0                    |
+    | (0, 0)        | 0.0           | (0, 0)            | 0.0 (cannot normalize) |
+
+    Vector length affects how fast an object moves diagonally, which caused inconsistent ball speed
+
 
 ## TODO:
  - Single player (P2 is AI)
@@ -50,6 +63,8 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
     - P1 and P2 score tracking
     - Rally score tracking
     - Start label
+### 2025-11-27
+ - Fixed inconsistent ball speed with normalization
 
 ## Credits
 

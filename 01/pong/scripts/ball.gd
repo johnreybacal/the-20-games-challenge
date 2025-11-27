@@ -12,6 +12,7 @@ var p_position = null
 
 func _process(delta: float) -> void:
     if is_started:
+        direction = direction.normalized()
         var toward = Vector2(speed * direction.x * delta, speed * direction.y * delta)
         global_position = Vector2(global_position.x + toward.x, global_position.y + toward.y)
 
