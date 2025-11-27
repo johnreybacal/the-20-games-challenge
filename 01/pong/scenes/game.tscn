@@ -49,6 +49,7 @@ hud = NodePath("../CanvasLayer/HUD")
 p1 = NodePath("../Paddle")
 p2 = NodePath("../Paddle2")
 ball_scene = ExtResource("3_q4sla")
+is_p2_ai = true
 
 [node name="PlayArea" type="Area2D" parent="."]
 script = ExtResource("1_4vx4o")
@@ -63,6 +64,7 @@ position = Vector2(-142, 0)
 [node name="Paddle2" parent="." instance=ExtResource("1_0nbmt")]
 position = Vector2(142, 0)
 is_p1 = false
+is_ai = true
 
 [node name="Wall" parent="." instance=ExtResource("2_th3uo")]
 position = Vector2(0, -83)

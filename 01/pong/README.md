@@ -30,13 +30,14 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
    - Pausable: applied to Ball
  - The ball's `queue_free` triggers the play area's `_on_area_exited`
  - A `Container` must have a script attached to control control nodes inside it
+ - Use of `move_toward` to smoothen transition between 2 values using `delta`
 
 
 ## TODO:
- - Single player (P2 is AI)
- - Pause menu
-   - Resume
-   - Reset
+ - ~~Single player (P2 is AI)~~
+ - ~~Pause menu~~
+   - ~~Resume~~
+   - ~~Reset~~
  - Confetti particles on score
    - Sound effects
 
@@ -73,6 +74,8 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - Implement pause and reset
  - Remapped `01_pong_fire` to `01_pong_space` as it is also used to pause/unpause
  - Mapped `01_pong_reset` to reset the game
+ - Implement AI for P2 to follow ball
+   - only set axis to move towards to reuse Paddle's `_process` and boundedness
 
 ## Credits
 

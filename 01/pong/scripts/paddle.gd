@@ -3,16 +3,28 @@ class_name Paddle
 
 @export var move_speed = 150
 @export var is_p1 = true
-var is_at_top = false
-var is_at_bottom = false
+@export var is_ai = false
+
 enum PaddlePosition {Top, Middle, Bottom}
 var paddle_position = PaddlePosition.Middle
+var ai_axis: float = 0
+
+func set_is_ai(ai: bool):
+    is_ai = ai
+
+func set_ai_axis(axis: float):
+    ai_axis = axis
 
 func _process(delta: float) -> void:
-    var p1_axis = Input.get_axis("01_pong_p1_up", "01_pong_p1_down")
-    var p2_axis = Input.get_axis("01_pong_p2_up", "01_pong_p2_down")
+    var axis: float
 
-    var axis = p1_axis if is_p1 else p2_axis
+    if is_ai:
+        axis = ai_axis
+    else:
+        var p1_axis = Input.get_axis("01_pong_p1_up", "01_pong_p1_down")
+        var p2_axis = Input.get_axis("01_pong_p2_up", "01_pong_p2_down")
+
+        axis = p1_axis if is_p1 else p2_axis
 
     if paddle_position == PaddlePosition.Bottom and axis < 0:
         axis = 0

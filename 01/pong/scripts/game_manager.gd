@@ -5,6 +5,7 @@ extends Node
 @export var p1: Paddle = null
 @export var p2: Paddle = null
 @export var ball_scene: PackedScene = null
+@export var is_p2_ai = false
 
 var p1_score = 0
 var p2_score = 0
@@ -17,6 +18,7 @@ var first_score = null
 func _ready() -> void:
     if play_area:
         play_area.scored.connect(_on_play_area_scored)
+    p2.set_is_ai(is_p2_ai)
     init()
 
 func init():
@@ -32,13 +34,15 @@ func init():
     hud.init()
     spawn_ball()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
     if not is_rally_started:
         if Input.is_action_just_pressed("01_pong_reset") and first_score != null:
             init()
             return
         if ball:
             ball.global_position = Vector2(rally_starter.global_position.x + (10 if rally_starter == p1 else -10), rally_starter.global_position.y)
+        if is_p2_ai:
+            move_ai(delta)
             
         is_rally_started = Input.is_action_just_pressed("01_pong_space")
         if is_rally_started:
@@ -55,6 +59,30 @@ func _process(_delta: float) -> void:
         if Input.is_action_just_pressed("01_pong_reset") and get_tree().paused:
             init()
             get_tree().paused = false
+
+        if is_p2_ai:
+            move_ai(delta, ball)
+
+func move_ai(delta: float, target = null):
+    var target_y = target.global_position.y if target else 0
+    var p2_y = p2.global_position.y
+    var diff = abs(target_y - p2_y)
+    var target_axis: float = 0
+    if target_y > p2_y:
+        target_axis = 1
+    elif target_y < p2_y:
+        target_axis = -1
+    else:
+        target_axis = 0
+    
+    # Slow down when near
+    if diff < 5:
+        target_axis /= 3
+
+    if p2.paddle_position == Paddle.PaddlePosition.Middle:
+        p2.ai_axis = move_toward(p2.ai_axis, target_axis, delta * 1.25)
+    else:
+        p2.ai_axis = move_toward(p2.ai_axis, target_axis, delta * 5)
 
 
 func _on_play_area_scored(player: int) -> void:
