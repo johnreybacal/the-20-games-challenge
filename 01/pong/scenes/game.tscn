@@ -35,6 +35,7 @@ texture = SubResource("GradientTexture2D_uasa8")
 zoom = Vector2(4, 4)
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("play_area", "hud", "p1", "p2")]
+process_mode = 3
 script = ExtResource("1_yhhs0")
 play_area = NodePath("../PlayArea")
 hud = NodePath("../CanvasLayer/HUD")

@@ -7,11 +7,10 @@ class_name Ball
 
 signal on_paddle_hit()
 
-var is_started = false
-var p_position = null
+var is_in_play = false
 
 func _process(delta: float) -> void:
-    if is_started:
+    if is_in_play:
         direction = direction.normalized()
         var toward = Vector2(speed * direction.x * delta, speed * direction.y * delta)
         global_position = Vector2(global_position.x + toward.x, global_position.y + toward.y)

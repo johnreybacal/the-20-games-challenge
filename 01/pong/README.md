@@ -25,6 +25,11 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
     | (0, 0)        | 0.0           | (0, 0)            | 0.0 (cannot normalize) |
 
     Vector length affects how fast an object moves diagonally, which caused inconsistent ball speed
+ - [Process Modes](https://docs.godotengine.org/en/latest/tutorials/scripting/pausing_games.html#process-modes)
+   - Always: applied to Game Manager
+   - Pausable: applied to Ball
+ - The ball's `queue_free` triggers the play area's `_on_area_exited`
+ - A `Container` must have a script attached to control control nodes inside it
 
 
 ## TODO:
@@ -45,7 +50,7 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - 01_pong_p1_down
  - 01_pong_p2_up
  - 01_pong_p2_down
- - 01_pong_fire
+ - 01_pong_space
 
 ## Development Log
 ### 2025-11-26
@@ -65,6 +70,9 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
     - Start label
 ### 2025-11-27
  - Fixed inconsistent ball speed with normalization
+ - Implement pause and reset
+ - Remapped `01_pong_fire` to `01_pong_space` as it is also used to pause/unpause
+ - Mapped `01_pong_reset` to reset the game
 
 ## Credits
 
