@@ -25,7 +25,7 @@ I will do all games and log what I learned in a README file for each game
 ## TODO
  - ~~Create menu to access all games~~
    - ~~01 Pong: vs CPU / vs Human option~~
- - Deploy to itch.io
+ - ~~Deploy to itch.io~~
 
 
 ## Key Takeaways

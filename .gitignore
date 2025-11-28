@@ -40,3 +40,6 @@ logs/
 
 # Keep project.godot (do NOT ignore)
 # Keep assets source files (png, wav, tscn, gd, etc.)
+
+
+exports/
