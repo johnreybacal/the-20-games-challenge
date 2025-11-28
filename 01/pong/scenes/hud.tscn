@@ -94,5 +94,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 text = "Press space to resume
 
-Press R to reset"
+Press R to reset
+
+Press esc to quit"
 horizontal_alignment = 1

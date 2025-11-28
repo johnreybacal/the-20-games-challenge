@@ -3,6 +3,7 @@
 Learning game development with Godot with the 20 games challenge instead of plunging into tutorial hell
 
 I will do all games and log what I learned in a README file for each game
+ - each game should have a Key Takeaways and Development Log headers
 
 ## Games
  - [01: Pong](01/pong/README.md)
@@ -22,6 +23,26 @@ I will do all games and log what I learned in a README file for each game
 
 
 ## TODO
- - Create menu to access all games
-   - 01 Pong: vs CPU / vs Human option
+ - ~~Create menu to access all games~~
+   - ~~01 Pong: vs CPU / vs Human option~~
  - Deploy to itch.io
+
+
+## Key Takeaways
+These items are applicable on development of main menu. More entries in README.md for each game's subfolder
+ - Inspection of Nodes while the game is running via Scene > Remote
+   - usage of `get_tree()`
+ - [Changing scenes manually](https://docs.godotengine.org/en/latest/tutorials/scripting/change_scenes_manually.html)
+ - Autoloading scripts
+   - usage of global variables and functions
+
+## Development Log
+These items are applicable on development of main menu. More entries in README.md for each game's subfolder
+### 2025-11-28
+ - Implemented main menu
+   - Stop process and set invisible when playing games
+ - Add global script
+   - pass information between scenes
+   - reusable functions
+ - Set viewport size to 1280x720
+   - Set stretch mode to `canvas_items`

@@ -17,6 +17,7 @@ var rally = 0
 var first_score = null
 
 func _ready() -> void:
+    is_p2_ai = not Global.has_p2
     if play_area:
         play_area.scored.connect(_on_play_area_scored)
     p2.set_is_ai(is_p2_ai)
@@ -37,6 +38,8 @@ func init():
 
 func _process(delta: float) -> void:
     if not is_rally_started:
+        if Input.is_action_just_pressed("01_pong_quit"):
+            Global.quit_to_main_menu()
         if Input.is_action_just_pressed("01_pong_reset") and first_score != null:
             init()
             return
@@ -60,6 +63,8 @@ func _process(delta: float) -> void:
         if Input.is_action_just_pressed("01_pong_reset") and get_tree().paused:
             init()
             get_tree().paused = false
+        if Input.is_action_just_pressed("01_pong_quit") and get_tree().paused:
+            Global.quit_to_main_menu()
 
         if is_p2_ai:
             move_ai(delta, ball)
@@ -115,6 +120,7 @@ func spawn_confetti(player: int):
     var confetti: GPUParticles2D = confetti_scene.instantiate()
     confetti.global_position = Vector2(ball.global_position.x + (-10 if player == 1 else 10), ball.global_position.y)
     confetti.one_shot = true
+    confetti.emitting = true
     confetti.finished.connect(confetti.queue_free)
     (confetti.process_material as ParticleProcessMaterial).direction = Vector3(-1 if player == 1 else 1, -1, 0)
     add_child(confetti)

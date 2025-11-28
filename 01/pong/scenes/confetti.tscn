@@ -53,8 +53,10 @@ anim_offset_max = 1.0
 
 [node name="Confetti" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_alr52")
+emitting = false
 amount = 20
 texture = ExtResource("1_rjxw5")
+one_shot = true
 explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_1luvy")
 

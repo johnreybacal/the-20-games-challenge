@@ -3,7 +3,7 @@
 Pong was the first widely successful arcade game. It was released in 1972, and started the first arcade boom. The game may seem simple today, but it was designed directly in hardware. Essentially, Pong was a specialized computer designed to bounce a ball between two paddles and keep score.
 
 
-## Key takeaways
+## Key Takeaways
  - Connecting signals
  - Usage of enum for state
  - Using `GradientTexture2D` in `Sprite2D` to draw rectangle and circle instead of using images
@@ -31,6 +31,9 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - The ball's `queue_free` triggers the play area's `_on_area_exited`
  - A `Container` must have a script attached to control control nodes inside it
  - Use of `move_toward` to smoothen transition between 2 values using `delta`
+ - `finished` signal of `GPUParticles2D` only gets triggered if:
+   - `one_shot` is set to `true`
+   - `emmiting` is set to `true`
 
 
 ## TODO:
@@ -52,6 +55,7 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - 01_pong_p2_up
  - 01_pong_p2_down
  - 01_pong_space
+ - 01_pong_quit
 
 ## Development Log
 ### 2025-11-26
@@ -79,6 +83,13 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - Added confetti on score.
 ### 2025-11-28
  - Improve AI movement
+ - Added `01_pong_quit` input mapping
+ - Check if game is against CPU via global variable
+ - Added quit to main menu
+ - Update guide labels
+ - Removed net
+ - Adjusted camera zoom and node position / scale to new viewport size
+ - Fix confetti cleanup
 
 ## Credits
 
