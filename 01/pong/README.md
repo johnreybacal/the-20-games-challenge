@@ -76,7 +76,9 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - Mapped `01_pong_reset` to reset the game
  - Implement AI for P2 to follow ball
    - only set axis to move towards to reuse Paddle's `_process` and boundedness
- - Added confetti on score. 
+ - Added confetti on score.
+### 2025-11-28
+ - Improve AI movement
 
 ## Credits
 

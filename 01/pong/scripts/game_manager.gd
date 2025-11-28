@@ -69,21 +69,27 @@ func move_ai(delta: float, target = null):
     var p2_y = p2.global_position.y
     var diff = abs(target_y - p2_y)
     var target_axis: float = 0
+    var slow_diff: float = 10
+
     if target_y > p2_y:
         target_axis = 1
     elif target_y < p2_y:
         target_axis = -1
     else:
         target_axis = 0
-    
-    # Slow down when near
-    if diff < 5:
-        target_axis /= 3
+
+    # Gradually slow down when near
+    if diff < slow_diff:
+        target_axis = min(diff / slow_diff, abs(target_axis)) * target_axis
 
     if p2.paddle_position == Paddle.PaddlePosition.Middle:
-        p2.ai_axis = move_toward(p2.ai_axis, target_axis, delta * 1.25)
+        # Move faster when the ball is farther away
+        var move_delta = max(diff / 2, abs(target_axis)) if target else 1.25
+        p2.ai_axis = move_toward(p2.ai_axis, target_axis, delta * move_delta)
     else:
-        p2.ai_axis = move_toward(p2.ai_axis, target_axis, delta * 5)
+        # Move faster when at the edges
+        var move_delta = max(diff, 5)
+        p2.ai_axis = move_toward(p2.ai_axis, target_axis, delta * move_delta)
 
 
 func _on_play_area_scored(player: int) -> void:
