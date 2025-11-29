@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://37auvhhwgh4o"]
+
+[ext_resource type="PackedScene" uid="uid://dgrbxhkftphuk" path="res://01/flappy_bird/scenes/bird.tscn" id="1_kfb1y"]
+[ext_resource type="Script" uid="uid://d24ok7vn3r1a7" path="res://01/flappy_bird/scripts/game_manager.gd" id="2_2ndrx"]
+[ext_resource type="PackedScene" uid="uid://bc0hpp52hn736" path="res://01/flappy_bird/scenes/pipe_obstacle.tscn" id="2_c47ja"]
+[ext_resource type="Texture2D" uid="uid://bwfolga1iehsh" path="res://01/flappy_bird/assets/sprites/base.png" id="4_fekwe"]
+[ext_resource type="Texture2D" uid="uid://m0ftenq8cv36" path="res://01/flappy_bird/assets/sprites/background-day.png" id="5_5s086"]
+
+[node name="Node" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Bird" parent="." instance=ExtResource("1_kfb1y")]
+jump_force = -300.0
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_2ndrx")
+pipe_scene = ExtResource("2_c47ja")
+interval = 2.0
+
+[node name="Base" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 249)
+scale = Vector2(0.80035716, 0.80035716)
+texture = ExtResource("4_fekwe")
+
+[node name="Base2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(269, 248.99998)
+scale = Vector2(0.80035716, 0.80035716)
+texture = ExtResource("4_fekwe")
+
+[node name="Base3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-267.99994, 248.99998)
+scale = Vector2(0.80035716, 0.80035716)
+texture = ExtResource("4_fekwe")
+
+[node name="BackgroundDay" type="Sprite2D" parent="."]
+scale = Vector2(0.94, 0.94)
+texture = ExtResource("5_5s086")
+
+[node name="BackgroundDay2" type="Sprite2D" parent="."]
+position = Vector2(-270.99997, 0)
+scale = Vector2(0.94, 0.94)
+texture = ExtResource("5_5s086")
+flip_h = true
+
+[node name="BackgroundDay3" type="Sprite2D" parent="."]
+position = Vector2(271, 0)
+scale = Vector2(0.94, 0.94)
+texture = ExtResource("5_5s086")
+flip_h = true
