@@ -5,10 +5,17 @@ class_name Bird
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+var is_playing = true
+
+signal on_game_over()
+
 func _ready():
+    body_entered.connect(_on_body_entered)
     animated_sprite_2d.animation_finished.connect(on_animation_finished)
 
 func _process(delta: float):
+    if not is_playing:
+        return
     if Input.is_action_just_pressed("01_flappy_bird_flap"):
         linear_velocity = Vector2.ZERO
         
@@ -16,8 +23,13 @@ func _process(delta: float):
         animated_sprite_2d.play("flap")
         animated_sprite_2d.rotation = deg_to_rad(-30)
 
-    
     animated_sprite_2d.rotation = rotate_toward(animated_sprite_2d.rotation, deg_to_rad(75), delta * 1.5)
+
 func on_animation_finished():
     if animated_sprite_2d.animation == "flap":
         animated_sprite_2d.play("default")
+
+func _on_body_entered(body: Node) -> void:
+    if body.is_in_group("obstacle"):
+        is_playing = false
+        on_game_over.emit()

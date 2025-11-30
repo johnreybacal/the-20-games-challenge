@@ -1,45 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc0hpp52hn736"]
+[gd_scene load_steps=3 format=3 uid="uid://bc0hpp52hn736"]
 
 [ext_resource type="Texture2D" uid="uid://qefmjb8qbmt" path="res://01/flappy_bird/assets/sprites/pipe-green.png" id="1_3yd0q"]
-[ext_resource type="Script" uid="uid://c85bd2lg62mpm" path="res://01/flappy_bird/scripts/pipe_obstacle.gd" id="1_lk542"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lk542"]
 size = Vector2(52, 319.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq157"]
-size = Vector2(12, 90)
-
 [node name="PipeObstacle" type="Node2D"]
-script = ExtResource("1_lk542")
 
 [node name="PipeTop" type="Node2D" parent="."]
-position = Vector2(0, -205)
+position = Vector2(0, -202.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="PipeTop"]
 z_index = 1
 texture = ExtResource("1_3yd0q")
 flip_v = true
 
-[node name="Area2D" type="Area2D" parent="PipeTop"]
+[node name="StaticBody2D" type="StaticBody2D" parent="PipeTop" groups=["obstacle"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeTop/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeTop/StaticBody2D"]
 position = Vector2(0, 0.125)
 shape = SubResource("RectangleShape2D_lk542")
 
 [node name="PipeBottom" type="Node2D" parent="."]
-position = Vector2(0, 205)
+position = Vector2(0, 202.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="PipeBottom"]
 z_index = 1
 texture = ExtResource("1_3yd0q")
 
-[node name="Area2D" type="Area2D" parent="PipeBottom"]
+[node name="StaticBody2D" type="StaticBody2D" parent="PipeBottom" groups=["obstacle"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeBottom/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeBottom/StaticBody2D"]
 shape = SubResource("RectangleShape2D_lk542")
-
-[node name="ScoreArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
-position = Vector2(20, 0)
-shape = SubResource("RectangleShape2D_vq157")

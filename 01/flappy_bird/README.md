@@ -15,10 +15,12 @@ I already created a flappy bird before by following a tutorial
       - impulse: used for instant acceleration
  - Rotation: Godot uses radians. PI = 180°, PI/2 = 90° etc...
    - `deg_to_rad`: Converts degrees to radians
+ - `RigidBody2D` won't emit collision signal unless `contact_monitor` is `true`
+   - also need to set `max_contacts_reported`
 
 
 ## TODO:
- - game over on hit (pipe / floor)
+ - ~~game over on hit (pipe / floor)~~
  - UI
    - start
    - score
@@ -32,6 +34,7 @@ I already created a flappy bird before by following a tutorial
 
 ## Groups
  - player
+ - obstacle
 
 ## Mapped Actions
  - 01_flappy_bird_flap
@@ -44,6 +47,12 @@ I already created a flappy bird before by following a tutorial
  - Added PipeObstacle
    - Setup body entered functions for game over and score
  - Added GameManager to spawn PipeObstacle at fixed X and ranged Y coordinates at an interval
+### 2025-11-30
+ - Removed pipe_obstacle script
+ - Moved pipe movement to game_manager
+ - Changed `Area2D` to `StaticBody2D` to detect collisions from player for obstacles
+ - Added bottom and top bounds
+ - Stop input and pipe movement when player hits an obstacle
 
 ## Credits
 
