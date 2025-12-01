@@ -1,5 +1,4 @@
 extends Area2D
-class_name Paddle
 
 @export var move_speed = 150
 @export var is_p1 = true

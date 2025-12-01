@@ -1,9 +1,9 @@
 extends Node
 
-@export var play_area: PlayArea = null
-@export var hud: Hud = null
-@export var p1: Paddle = null
-@export var p2: Paddle = null
+@export var play_area: Pong.PlayArea = null
+@export var hud: Pong.Hud = null
+@export var p1: Pong.Paddle = null
+@export var p2: Pong.Paddle = null
 @export var ball_scene: PackedScene = null
 @export var confetti_scene: PackedScene = null
 @export var is_p2_ai = false
@@ -11,8 +11,8 @@ extends Node
 var p1_score = 0
 var p2_score = 0
 var is_rally_started = false
-var rally_starter: Paddle = null
-var ball: Ball = null
+var rally_starter: Pong.Paddle = null
+var ball: Pong.Ball = null
 var rally = 0
 var first_score = null
 
@@ -87,7 +87,7 @@ func move_ai(delta: float, target = null):
     if diff < slow_diff:
         target_axis = min(diff / slow_diff, abs(target_axis)) * target_axis
 
-    if p2.paddle_position == Paddle.PaddlePosition.Middle:
+    if p2.paddle_position == Pong.Paddle.PaddlePosition.Middle:
         # Move faster when the ball is farther away
         var move_delta = max(diff / 2, abs(target_axis)) if target else 1.25
         p2.ai_axis = move_toward(p2.ai_axis, target_axis, delta * move_delta)

@@ -1,5 +1,5 @@
 extends Area2D
-class_name Ball
+
 @export var speed = 100
 @export var direction = Vector2(1, 1)
 

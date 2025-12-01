@@ -90,6 +90,8 @@ Pong was the first widely successful arcade game. It was released in 1972, and s
  - Removed net
  - Adjusted camera zoom and node position / scale to new viewport size
  - Fix confetti cleanup
+### 2025-12-01
+ - Setup namespacing 
 
 ## Credits
 

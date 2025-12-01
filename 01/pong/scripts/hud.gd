@@ -1,5 +1,4 @@
 extends Control
-class_name Hud
 
 @onready var p1_score: Label = $P1Score
 @onready var p2_score: Label = $P2Score
