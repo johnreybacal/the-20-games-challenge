@@ -55,7 +55,14 @@ func on_start():
 func on_game_over():
     is_playing = false
     hud.set_game_over_message_visibility(true)
+    
+    for node in get_tree().get_nodes_in_group("score_area"):
+        call_deferred("disable_collision_of_node", node)
+    
 
 func on_score():
     score += 1
     hud.set_score(score)
+
+func disable_collision_of_node(node: Node):
+    (node.get_node("CollisionShape2D") as CollisionShape2D).disabled = true

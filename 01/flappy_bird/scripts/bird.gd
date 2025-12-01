@@ -4,6 +4,7 @@ extends RigidBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var flap_sfx: AudioStreamPlayer2D = $SFX/Flap
+@onready var die_sfx: AudioStreamPlayer2D = $SFX/Die
 @onready var hit_sfx: AudioStreamPlayer2D = $SFX/Hit
 @onready var point_sfx: AudioStreamPlayer2D = $SFX/Point
 
@@ -48,13 +49,22 @@ func on_animation_finished():
         animated_sprite_2d.play("default")
 
 func _on_body_entered(body: Node) -> void:
-    if body.is_in_group("obstacle"):
+    if body.is_in_group("obstacle") and is_playing:
+        is_playing = false
+        on_game_over.emit()
+        die_sfx.play()
+        linear_velocity = Vector2(125, linear_velocity.y)
+        angular_velocity = 10
+    if body.is_in_group("floor"):
         # Can't disable contact monitoring during in/out callback. Use call_deferred("set_contact_monitor", false) instead
         # contact_monitor = false
         max_contacts_reported = 0
-        is_playing = false
-        on_game_over.emit()
+        die_sfx.stop()
         hit_sfx.play()
     if body.is_in_group("score_area"):
+        call_deferred("disable_collision_of_body", body)
         on_score.emit()
         point_sfx.play()
+
+func disable_collision_of_body(body: Node):
+    (body.get_node("CollisionShape2D") as CollisionShape2D).disabled = true

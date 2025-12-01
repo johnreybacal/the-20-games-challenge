@@ -33,6 +33,7 @@ ball=""
 player=""
 obstacle=""
 score_area=""
+floor=""
 
 [input]
 

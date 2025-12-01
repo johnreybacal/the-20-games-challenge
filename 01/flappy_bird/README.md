@@ -44,6 +44,7 @@ I already created a flappy bird before by following a tutorial
  - player
  - obstacle
  - score_area
+ - floor
 
 ## Mapped Actions
  - 01_flappy_bird_flap
@@ -69,7 +70,11 @@ I already created a flappy bird before by following a tutorial
  - Added HUD for start, game over, and score
  - Added `Counter` for score (will be reused for highscore)
    - Setup list of `CompressedTexture2D`
-   - Spawn `Sprite2D` and set proper texture for each number 
+   - Spawn `Sprite2D` and set proper texture for each number
+ - Updated SFX to play `die_sfx` on death and play `hit_sfx` when hitting floor
+ - Added forward force and little rotation on death to make simulate stopped forward movement
+   - and to ensure falling on floor (for drama)
+ - Disable score areas on death to avoid extra points
 
 ## Credits
 

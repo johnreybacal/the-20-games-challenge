@@ -70,7 +70,7 @@ position = Vector2(0, -250)
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_5s086")
 
-[node name="BottomBound" type="StaticBody2D" parent="." groups=["obstacle"]]
+[node name="BottomBound" type="StaticBody2D" parent="." groups=["floor", "obstacle"]]
 z_index = 2
 position = Vector2(0, 214)
 
