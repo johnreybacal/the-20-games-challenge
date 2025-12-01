@@ -17,6 +17,10 @@ I already created a flappy bird before by following a tutorial
    - `deg_to_rad`: Converts degrees to radians
  - `RigidBody2D` won't emit collision signal unless `contact_monitor` is `true`
    - also need to set `max_contacts_reported`
+   - can't disabled `contact_monitor` during signal event, need to use `call_deferred`
+ - Collision layer and mask
+   - Layer defines what categories an object belongs to
+   - Mask defines which of those categories it will check for collisions with
 
 
 ## TODO:
@@ -25,7 +29,7 @@ I already created a flappy bird before by following a tutorial
    - start
    - score
    - game over
- - Sounds
+ - ~~Sounds~~
  - BG parallax
  - high score
    - ghost?
@@ -35,6 +39,7 @@ I already created a flappy bird before by following a tutorial
 ## Groups
  - player
  - obstacle
+ - score_area
 
 ## Mapped Actions
  - 01_flappy_bird_flap
@@ -53,6 +58,9 @@ I already created a flappy bird before by following a tutorial
  - Changed `Area2D` to `StaticBody2D` to detect collisions from player for obstacles
  - Added bottom and top bounds
  - Stop input and pipe movement when player hits an obstacle
+### 2025-12-01
+ - Add SFX: flap, hit, score
+ - Added score body for pipe obstacle for score trigger
 
 ## Credits
 
