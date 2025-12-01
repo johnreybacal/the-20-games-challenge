@@ -1,5 +1,4 @@
 extends RigidBody2D
-class_name Bird
 
 @export var jump_force: float = -200
 
@@ -8,27 +7,41 @@ class_name Bird
 @onready var hit_sfx: AudioStreamPlayer2D = $SFX/Hit
 @onready var point_sfx: AudioStreamPlayer2D = $SFX/Point
 
-var is_playing = true
+var is_playing = false
+var is_first_flap = true
 
 signal on_game_over()
+signal on_first_flap()
+signal on_score()
 
 func _ready():
+    freeze = true
     body_entered.connect(_on_body_entered)
     animated_sprite_2d.animation_finished.connect(on_animation_finished)
 
 func _process(delta: float):
     if not is_playing:
+        if Input.is_action_just_pressed("01_flappy_bird_flap") and is_first_flap:
+            on_first_flap.emit()
+            is_playing = true
+            is_first_flap = false
+            freeze = false
+            flap()
         return
     if Input.is_action_just_pressed("01_flappy_bird_flap"):
-        linear_velocity = Vector2.ZERO
-        
-        apply_central_impulse(Vector2(0, jump_force))
-        animated_sprite_2d.play("flap")
-        animated_sprite_2d.rotation = deg_to_rad(-30)
-        flap_sfx.pitch_scale = randf_range(0.75, 1.25)
-        flap_sfx.play()
+        flap()
 
     animated_sprite_2d.rotation = rotate_toward(animated_sprite_2d.rotation, deg_to_rad(75), delta * 1.5)
+
+func flap():
+    linear_velocity = Vector2.ZERO
+        
+    apply_central_impulse(Vector2(0, jump_force))
+    animated_sprite_2d.play("flap")
+    animated_sprite_2d.rotation = deg_to_rad(-30)
+    flap_sfx.pitch_scale = randf_range(0.75, 1.25)
+    flap_sfx.play()
+
 
 func on_animation_finished():
     if animated_sprite_2d.animation == "flap":
@@ -43,4 +56,5 @@ func _on_body_entered(body: Node) -> void:
         on_game_over.emit()
         hit_sfx.play()
     if body.is_in_group("score_area"):
+        on_score.emit()
         point_sfx.play()

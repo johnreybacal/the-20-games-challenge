@@ -37,6 +37,7 @@ animations = [{
 }]
 
 [node name="Bird" type="RigidBody2D" groups=["player"]]
+freeze = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_m3u7o")

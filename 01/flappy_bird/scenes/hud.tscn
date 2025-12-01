@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cttxm5bkvyo5i"]
+
+[ext_resource type="Texture2D" uid="uid://bwiwiobxw6843" path="res://01/flappy_bird/assets/sprites/UI/message.png" id="1_3uqrh"]
+[ext_resource type="Script" uid="uid://dxkqbf37bston" path="res://01/flappy_bird/scripts/hud.gd" id="1_r0mtt"]
+[ext_resource type="Texture2D" uid="uid://cb05t2wmbn83p" path="res://01/flappy_bird/assets/sprites/UI/gameover.png" id="2_r0mtt"]
+[ext_resource type="PackedScene" uid="uid://dsuvh7h44wjut" path="res://01/flappy_bird/scenes/counter.tscn" id="4_d71tc"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_r0mtt")
+
+[node name="StartMessage" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Message" type="Sprite2D" parent="StartMessage"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_3uqrh")
+offset = Vector2(0, -48)
+
+[node name="GameOverMesage" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Gameover" type="Sprite2D" parent="GameOverMesage"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_r0mtt")
+
+[node name="Counter" parent="." instance=ExtResource("4_d71tc")]
+position = Vector2(50, 50)

@@ -1,6 +1,7 @@
 extends Node
 
-@export var player: Bird
+@export var player: FlappyBird.Bird
+@export var hud: FlappyBird.Hud
 @export var pipe_scene: PackedScene
 @export var pipe_move_speed: float = 100
 @export var interval = 1.5
@@ -8,13 +9,17 @@ var timer = interval
 var spawn_x = 450
 var spawn_y_min = -125
 var spawn_y_max = 125
-var is_playing = true
+var is_playing = false
+var score = 0
 
 var pipes: Array[Node2D] = []
 
 func _ready():
     if player:
+        player.on_first_flap.connect(on_start)
+        player.on_score.connect(on_score)
         player.on_game_over.connect(on_game_over)
+    hud.init()
 
 func _process(delta: float) -> void:
     if not is_playing:
@@ -43,5 +48,14 @@ func _process(delta: float) -> void:
         pipes[remove_pipe_index].queue_free()
         pipes.remove_at(remove_pipe_index)
 
+func on_start():
+    is_playing = true
+    hud.set_start_message_visibility(false)
+
 func on_game_over():
     is_playing = false
+    hud.set_game_over_message_visibility(true)
+
+func on_score():
+    score += 1
+    hud.set_score(score)

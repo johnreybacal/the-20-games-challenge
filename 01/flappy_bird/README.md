@@ -21,14 +21,18 @@ I already created a flappy bird before by following a tutorial
  - Collision layer and mask
    - Layer defines what categories an object belongs to
    - Mask defines which of those categories it will check for collisions with
+ - gdscript does not support namespacing/packaging
+   - classes are globally scoped
+   - had a clash using `Hud`
+   - workaround: https://github.com/godotengine/godot-proposals/issues/1566#issuecomment-698822646
 
 
 ## TODO:
  - ~~game over on hit (pipe / floor)~~
- - UI
-   - start
-   - score
-   - game over
+ - ~~UI~~
+   - ~~start~~
+   - ~~score~~
+   - ~~game over~~
  - ~~Sounds~~
  - BG parallax
  - high score
@@ -61,6 +65,11 @@ I already created a flappy bird before by following a tutorial
 ### 2025-12-01
  - Add SFX: flap, hit, score
  - Added score body for pipe obstacle for score trigger
+ - Setup namespacing for Flappy Bird
+ - Added HUD for start, game over, and score
+ - Added `Counter` for score (will be reused for highscore)
+   - Setup list of `CompressedTexture2D`
+   - Spawn `Sprite2D` and set proper texture for each number 
 
 ## Credits
 

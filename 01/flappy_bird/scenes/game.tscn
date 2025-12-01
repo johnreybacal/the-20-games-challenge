@@ -1,15 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://37auvhhwgh4o"]
+[gd_scene load_steps=8 format=3 uid="uid://37auvhhwgh4o"]
 
 [ext_resource type="PackedScene" uid="uid://dgrbxhkftphuk" path="res://01/flappy_bird/scenes/bird.tscn" id="1_kfb1y"]
 [ext_resource type="Script" uid="uid://d24ok7vn3r1a7" path="res://01/flappy_bird/scripts/game_manager.gd" id="2_2ndrx"]
 [ext_resource type="PackedScene" uid="uid://bc0hpp52hn736" path="res://01/flappy_bird/scenes/pipe_obstacle.tscn" id="2_c47ja"]
 [ext_resource type="Texture2D" uid="uid://bwfolga1iehsh" path="res://01/flappy_bird/assets/sprites/base.png" id="4_fekwe"]
 [ext_resource type="Texture2D" uid="uid://m0ftenq8cv36" path="res://01/flappy_bird/assets/sprites/background-day.png" id="5_5s086"]
+[ext_resource type="PackedScene" uid="uid://cttxm5bkvyo5i" path="res://01/flappy_bird/scenes/hud.tscn" id="6_o1814"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5s086"]
 size = Vector2(851, 20)
 
 [node name="Node" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("6_o1814")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
@@ -17,9 +22,10 @@ zoom = Vector2(1.5, 1.5)
 [node name="Bird" parent="." instance=ExtResource("1_kfb1y")]
 jump_force = -300.0
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "hud")]
 script = ExtResource("2_2ndrx")
 player = NodePath("../Bird")
+hud = NodePath("../CanvasLayer/HUD")
 pipe_scene = ExtResource("2_c47ja")
 interval = 2.0
 

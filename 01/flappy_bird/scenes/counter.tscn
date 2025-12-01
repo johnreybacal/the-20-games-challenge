@@ -1,0 +1,17 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsuvh7h44wjut"]
+
+[ext_resource type="Script" uid="uid://wdq2s7k32q40" path="res://01/flappy_bird/scripts/counter.gd" id="1_qs4me"]
+[ext_resource type="Texture2D" uid="uid://d1n1cc1l4ubca" path="res://01/flappy_bird/assets/sprites/UI/Numbers/0.png" id="2_5gs00"]
+[ext_resource type="Texture2D" uid="uid://dk0ivcrii0ejn" path="res://01/flappy_bird/assets/sprites/UI/Numbers/1.png" id="3_c2em7"]
+[ext_resource type="Texture2D" uid="uid://owbwgegp0xio" path="res://01/flappy_bird/assets/sprites/UI/Numbers/2.png" id="4_3kmoi"]
+[ext_resource type="Texture2D" uid="uid://18na8pce2icf" path="res://01/flappy_bird/assets/sprites/UI/Numbers/3.png" id="5_eejek"]
+[ext_resource type="Texture2D" uid="uid://3t64uvjxbcbb" path="res://01/flappy_bird/assets/sprites/UI/Numbers/4.png" id="6_cvivj"]
+[ext_resource type="Texture2D" uid="uid://cgi38poirbx3u" path="res://01/flappy_bird/assets/sprites/UI/Numbers/5.png" id="7_1688r"]
+[ext_resource type="Texture2D" uid="uid://bxsh8r7nu6jtk" path="res://01/flappy_bird/assets/sprites/UI/Numbers/6.png" id="8_qvktd"]
+[ext_resource type="Texture2D" uid="uid://1w7m5m6qvhfd" path="res://01/flappy_bird/assets/sprites/UI/Numbers/7.png" id="9_ax12e"]
+[ext_resource type="Texture2D" uid="uid://o5q4gg22ndlf" path="res://01/flappy_bird/assets/sprites/UI/Numbers/8.png" id="10_5cf3d"]
+[ext_resource type="Texture2D" uid="uid://bncdqr8xkpxfv" path="res://01/flappy_bird/assets/sprites/UI/Numbers/9.png" id="11_lp6xy"]
+
+[node name="Counter" type="Node2D"]
+script = ExtResource("1_qs4me")
+number_textures = Array[CompressedTexture2D]([ExtResource("2_5gs00"), ExtResource("3_c2em7"), ExtResource("4_3kmoi"), ExtResource("5_eejek"), ExtResource("6_cvivj"), ExtResource("7_1688r"), ExtResource("8_qvktd"), ExtResource("9_ax12e"), ExtResource("10_5cf3d"), ExtResource("11_lp6xy")])
