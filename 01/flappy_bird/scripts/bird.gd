@@ -4,6 +4,9 @@ class_name Bird
 @export var jump_force: float = -200
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var flap_sfx: AudioStreamPlayer2D = $SFX/Flap
+@onready var hit_sfx: AudioStreamPlayer2D = $SFX/Hit
+@onready var point_sfx: AudioStreamPlayer2D = $SFX/Point
 
 var is_playing = true
 
@@ -22,6 +25,8 @@ func _process(delta: float):
         apply_central_impulse(Vector2(0, jump_force))
         animated_sprite_2d.play("flap")
         animated_sprite_2d.rotation = deg_to_rad(-30)
+        flap_sfx.pitch_scale = randf_range(0.75, 1.25)
+        flap_sfx.play()
 
     animated_sprite_2d.rotation = rotate_toward(animated_sprite_2d.rotation, deg_to_rad(75), delta * 1.5)
 
@@ -31,5 +36,11 @@ func on_animation_finished():
 
 func _on_body_entered(body: Node) -> void:
     if body.is_in_group("obstacle"):
+        # Can't disable contact monitoring during in/out callback. Use call_deferred("set_contact_monitor", false) instead
+        # contact_monitor = false
+        max_contacts_reported = 0
         is_playing = false
         on_game_over.emit()
+        hit_sfx.play()
+    if body.is_in_group("score_area"):
+        point_sfx.play()

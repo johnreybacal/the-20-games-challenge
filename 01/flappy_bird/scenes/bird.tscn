@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgrbxhkftphuk"]
+[gd_scene load_steps=10 format=3 uid="uid://dgrbxhkftphuk"]
 
 [ext_resource type="Texture2D" uid="uid://cttqqbssggvkh" path="res://01/flappy_bird/assets/sprites/yellowbird-upflap.png" id="1_54goc"]
 [ext_resource type="Script" uid="uid://ddaulmgy47oy2" path="res://01/flappy_bird/scripts/bird.gd" id="1_m3u7o"]
 [ext_resource type="Texture2D" uid="uid://2skvj16ojtdj" path="res://01/flappy_bird/assets/sprites/yellowbird-midflap.png" id="2_m3u7o"]
 [ext_resource type="Texture2D" uid="uid://2usphtijxhxr" path="res://01/flappy_bird/assets/sprites/yellowbird-downflap.png" id="3_iyc7d"]
+[ext_resource type="AudioStream" uid="uid://cccgp8g0dpevj" path="res://01/flappy_bird/assets/audio/wing.ogg" id="5_iyc7d"]
+[ext_resource type="AudioStream" uid="uid://bq54yxjp06tjn" path="res://01/flappy_bird/assets/audio/hit.ogg" id="6_gdvwd"]
+[ext_resource type="AudioStream" uid="uid://bnn0cdpw2fed3" path="res://01/flappy_bird/assets/audio/point.ogg" id="7_o8b4n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m3u7o"]
 radius = 11.0
@@ -47,3 +50,15 @@ shape = SubResource("CapsuleShape2D_m3u7o")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_o8b4n")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Flap" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_iyc7d")
+volume_db = -10.0
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_gdvwd")
+
+[node name="Point" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_o8b4n")
