@@ -26,7 +26,10 @@ func _ready():
         player.on_score.connect(on_score)
         player.on_game_over.connect(on_game_over)
     hud.init()
+
     hud.on_restart.connect(get_tree().reload_current_scene)
+    hud.on_quit.connect(Global.quit_to_main_menu)
+    
     high_score = Global.session_data.get(SESSION_HIGH_SCORE_KEY, 0)
     hud.set_high_score(high_score)
 

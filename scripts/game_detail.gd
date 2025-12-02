@@ -5,9 +5,9 @@ class_name GameDetail
 @export var title: String
 @export var description: String
 @export var has_p2: bool
-@export var scene_path: PackedScene = null
+@export var scene_path: String
 
-static func make(title: String, description: String, has_p2: bool, scene_path: PackedScene = null) -> GameDetail:
+static func make(title: String, description: String, has_p2: bool, scene_path: String) -> GameDetail:
     var g := GameDetail.new()
     g.title = title
     g.description = description

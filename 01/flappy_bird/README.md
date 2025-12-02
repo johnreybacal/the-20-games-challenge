@@ -85,6 +85,7 @@ I already created a flappy bird before by following a tutorial
  - UI transition
  - Add restart button
  - Add high score (session only)
+ - Add quit button
 
 ## Credits
 

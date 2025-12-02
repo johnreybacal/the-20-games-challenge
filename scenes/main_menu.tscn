@@ -41,7 +41,6 @@ auto_width = true
 item_count = 2
 item_0/text = "01: Pong"
 item_1/text = "01: Flappy Bird"
-item_1/disabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

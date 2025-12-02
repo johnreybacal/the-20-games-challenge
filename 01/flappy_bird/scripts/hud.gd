@@ -7,6 +7,7 @@ extends Control
 @onready var high_score: FlappyBird.Counter = $HighScore
 
 signal on_restart()
+signal on_quit()
 
 func _ready():
     init()
@@ -32,3 +33,6 @@ func set_high_score(value: int):
 
 func _on_restart_button_pressed() -> void:
     on_restart.emit()
+
+func _on_quit_button_pressed() -> void:
+    on_quit.emit()

@@ -7,28 +7,25 @@ class_name MainMenu
 @onready var p2checkbox: CheckBox = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/P2Checkbox
 @onready var play_button: Button = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PlayButton
 
-var game_details: Array[GameDetail] = []
-
-func _ready():
-    game_details = [
+var game_details: Array[GameDetail] = [
         GameDetail.make(
             "Pong",
             "Pong was the first widely successful arcade game. It was released in 1972, and started the first arcade boom. The game may seem simple today, but it was designed directly in hardware. Essentially, Pong was a specialized computer designed to bounce a ball between two paddles and keep score.",
             true,
-            preload("res://01/pong/scenes/game.tscn")
+            "res://01/pong/scenes/game.tscn"
         ),
         GameDetail.make(
             "Flappy Bird",
             "Flappy bird was a mobile game from 2013. It was a sleeper hit, gaining sudden and massive popularity in 2014, likely due to attention from a popular YouTuber at that time. The game was removed from the App store after it’s sudden popularity due to negative media attention.",
-            false
+            false,
+            "res://01/flappy_bird/scenes/game.tscn"
         )
     ]
+
+func _ready():
     game_list.item_selected.connect(on_game_selected)
     game_list.select(0)
     on_game_selected(0)
-
-    # Somehow, by changing scene and going back to main_manu, the signal connections are lost.
-    # play_button.pressed.connect(on_game_start)
 
 func on_game_selected(index: int):
     var game_detail = game_details[index]
@@ -44,12 +41,4 @@ func on_game_start():
 
     if game_detail.scene_path:
         Global.has_p2 = p2checkbox.button_pressed
-        var new_scene: Node = game_detail.scene_path.instantiate()
-        new_scene.tree_exited.connect(on_quit)
-        visible = false
-        process_mode = Node.PROCESS_MODE_DISABLED
-        get_tree().root.add_child(new_scene)
-
-func on_quit():
-    process_mode = Node.PROCESS_MODE_ALWAYS
-    visible = true
+        get_tree().change_scene_to_file(game_detail.scene_path)

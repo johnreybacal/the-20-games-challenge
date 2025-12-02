@@ -46,3 +46,7 @@ These items are applicable on development of main menu. More entries in README.m
    - reusable functions
  - Set viewport size to 1280x720
    - Set stretch mode to `canvas_items`
+### 2025-12-02
+ - Add flappy bird game
+ - Use `get_tree().change_scene_to_file` when changing scene
+   - no longer manage pause and visibility for mainmenu
