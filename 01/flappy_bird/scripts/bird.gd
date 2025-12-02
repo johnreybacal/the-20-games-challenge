@@ -8,6 +8,7 @@ extends RigidBody2D
 @onready var hit_sfx: AudioStreamPlayer2D = $SFX/Hit
 @onready var point_sfx: AudioStreamPlayer2D = $SFX/Point
 
+var can_flap = false
 var is_playing = false
 var is_first_flap = true
 
@@ -22,7 +23,7 @@ func _ready():
 
 func _process(delta: float):
     if not is_playing:
-        if Input.is_action_just_pressed("01_flappy_bird_flap") and is_first_flap:
+        if Input.is_action_just_pressed("01_flappy_bird_flap") and is_first_flap and can_flap:
             on_first_flap.emit()
             is_playing = true
             is_first_flap = false
@@ -68,3 +69,7 @@ func _on_body_entered(body: Node) -> void:
 
 func disable_collision_of_body(body: Node):
     (body.get_node("CollisionShape2D") as CollisionShape2D).disabled = true
+
+
+func _on_first_flap_timer_timeout() -> void:
+    can_flap = true

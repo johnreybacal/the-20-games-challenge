@@ -87,7 +87,9 @@ I already created a flappy bird before by following a tutorial
  - Add high score (session only)
  - Add quit button
  - Remove unsupported characters (export)
- 
+ - Wait for game over panel animation before enabling buttons
+ - Theme overrides for buttons
+
 
 ## Credits
 

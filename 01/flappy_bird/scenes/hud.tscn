@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cttxm5bkvyo5i"]
+[gd_scene load_steps=14 format=3 uid="uid://cttxm5bkvyo5i"]
 
 [ext_resource type="Texture2D" uid="uid://bwiwiobxw6843" path="res://01/flappy_bird/assets/sprites/UI/message.png" id="1_3uqrh"]
 [ext_resource type="Script" uid="uid://dxkqbf37bston" path="res://01/flappy_bird/scripts/hud.gd" id="1_r0mtt"]
 [ext_resource type="Texture2D" uid="uid://cb05t2wmbn83p" path="res://01/flappy_bird/assets/sprites/UI/gameover.png" id="2_r0mtt"]
+[ext_resource type="StyleBox" uid="uid://yodmtwh81lh" path="res://01/flappy_bird/styles/button_style.tres" id="4_3mm8y"]
 [ext_resource type="PackedScene" uid="uid://dsuvh7h44wjut" path="res://01/flappy_bird/scenes/counter.tscn" id="4_d71tc"]
 
 [sub_resource type="Animation" id="Animation_d71tc"]
@@ -43,7 +44,7 @@ events = [SubResource("InputEventKey_u2moe")]
 
 [sub_resource type="Animation" id="Animation_u2moe"]
 resource_name = "RESET"
-length = 0.5
+length = 0.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,7 +64,7 @@ tracks/1/path = NodePath("../RestartButton:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -75,10 +76,34 @@ tracks/2/path = NodePath("../QuitButton:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../RestartButton:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../QuitButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wkvt6"]
@@ -144,10 +169,23 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_focus_color = Color(0.8666667, 0.49803922, 0.050980393, 1)
+theme_override_colors/font_pressed_color = Color(0.8666667, 0.49803922, 0.050980393, 1)
+theme_override_colors/font_hover_color = Color(0.8666667, 0.49803922, 0.050980393, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8664005, 0.49647713, 0.052592367, 1)
+theme_override_colors/font_disabled_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("4_3mm8y")
+theme_override_styles/pressed = ExtResource("4_3mm8y")
+theme_override_styles/hover = ExtResource("4_3mm8y")
+theme_override_styles/disabled = ExtResource("4_3mm8y")
+theme_override_styles/focus = ExtResource("4_3mm8y")
+disabled = true
 shortcut = SubResource("Shortcut_3mm8y")
 shortcut_in_tooltip = false
-text = "restart"
+text = "RESTART"
 
 [node name="QuitButton" type="Button" parent="GameOverPanel"]
 modulate = Color(1, 1, 1, 0)
@@ -155,10 +193,23 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_focus_color = Color(0.8666667, 0.49803922, 0.050980393, 1)
+theme_override_colors/font_pressed_color = Color(0.8666667, 0.49803922, 0.050980393, 1)
+theme_override_colors/font_hover_color = Color(0.8666667, 0.49803922, 0.050980393, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8664005, 0.49647713, 0.052592367, 1)
+theme_override_colors/font_disabled_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("4_3mm8y")
+theme_override_styles/pressed = ExtResource("4_3mm8y")
+theme_override_styles/hover = ExtResource("4_3mm8y")
+theme_override_styles/disabled = ExtResource("4_3mm8y")
+theme_override_styles/focus = ExtResource("4_3mm8y")
+disabled = true
 shortcut = SubResource("Shortcut_wkvt6")
 shortcut_in_tooltip = false
-text = "quit"
+text = "QUIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverPanel"]
 root_node = NodePath("../CenterContainer")
