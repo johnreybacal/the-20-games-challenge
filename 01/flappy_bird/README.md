@@ -81,6 +81,7 @@ I already created a flappy bird before by following a tutorial
  - Disable score areas on death to avoid extra points
 ### 2025-12-02
  - Parallax background
+ - UI transition
 
 ## Credits
 
