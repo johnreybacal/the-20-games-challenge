@@ -33,21 +33,14 @@ floor_parallax = NodePath("../FloorParallax2D")
 bg_parallax = NodePath("../BgParallax2D")
 
 [node name="BgParallax2D" type="Parallax2D" parent="."]
-repeat_size = Vector2(576, 0)
+scroll_offset = Vector2(-10, 0)
+repeat_size = Vector2(276, 0)
 autoscroll = Vector2(-50, 0)
 repeat_times = 3
 ignore_camera_scroll = true
 
-[node name="Node2D" type="Node2D" parent="BgParallax2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="BgParallax2D/Node2D"]
-position = Vector2(-144, 0)
+[node name="Sprite2D" type="Sprite2D" parent="BgParallax2D"]
 texture = ExtResource("5_5s086")
-
-[node name="Sprite2DFlipped" type="Sprite2D" parent="BgParallax2D/Node2D"]
-position = Vector2(144, 0)
-texture = ExtResource("5_5s086")
-flip_h = true
 
 [node name="FloorParallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(336, 0)
