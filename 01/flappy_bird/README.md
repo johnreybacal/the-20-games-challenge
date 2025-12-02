@@ -25,6 +25,9 @@ I already created a flappy bird before by following a tutorial
    - classes are globally scoped
    - had a clash using `Hud`
    - workaround: https://github.com/godotengine/godot-proposals/issues/1566#issuecomment-698822646
+ - Usage of [Parallax2D](https://docs.godotengine.org/en/stable/classes/class_parallax2d.html)
+   - can autoscroll and repeat
+   - can ignore camera scroll
 
 
 ## TODO:
@@ -34,7 +37,8 @@ I already created a flappy bird before by following a tutorial
    - ~~score~~
    - ~~game over~~
  - ~~Sounds~~
- - BG parallax
+ - ~~BG parallax~~
+ - restart game
  - high score
    - ghost?
       - save generated pipe Y position, generate on unreached pipes
@@ -75,6 +79,8 @@ I already created a flappy bird before by following a tutorial
  - Added forward force and little rotation on death to make simulate stopped forward movement
    - and to ensure falling on floor (for drama)
  - Disable score areas on death to avoid extra points
+### 2025-12-02
+ - Parallax background
 
 ## Credits
 

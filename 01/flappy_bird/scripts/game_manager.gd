@@ -5,6 +5,10 @@ extends Node
 @export var pipe_scene: PackedScene
 @export var pipe_move_speed: float = 100
 @export var interval = 1.5
+@export var floor_parallax: Parallax2D
+@export var bg_parallax: Parallax2D
+
+
 var timer = interval
 var spawn_x = 450
 var spawn_y_min = -125
@@ -48,6 +52,7 @@ func _process(delta: float) -> void:
         pipes[remove_pipe_index].queue_free()
         pipes.remove_at(remove_pipe_index)
 
+    
 func on_start():
     is_playing = true
     hud.set_start_message_visibility(false)
@@ -55,7 +60,8 @@ func on_start():
 func on_game_over():
     is_playing = false
     hud.set_game_over_message_visibility(true)
-    
+    floor_parallax.autoscroll = Vector2.ZERO
+    bg_parallax.autoscroll = Vector2.ZERO
     for node in get_tree().get_nodes_in_group("score_area"):
         call_deferred("disable_collision_of_node", node)
     

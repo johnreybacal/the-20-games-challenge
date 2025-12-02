@@ -64,7 +64,7 @@ stream = ExtResource("6_o8b4n")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("6_gdvwd")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Point" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("7_o8b4n")
