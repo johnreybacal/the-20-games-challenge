@@ -38,11 +38,12 @@ I already created a flappy bird before by following a tutorial
    - ~~game over~~
  - ~~Sounds~~
  - ~~BG parallax~~
- - restart game
- - high score
+ - ~~restart game~~
+ - ~~high score~~
    - ghost?
       - save generated pipe Y position, generate on unreached pipes
       - save input to recreate movement for ghost
+ - return to main menu
 
 ## Groups
  - player
@@ -83,6 +84,7 @@ I already created a flappy bird before by following a tutorial
  - Parallax background
  - UI transition
  - Add restart button
+ - Add high score (session only)
 
 ## Credits
 

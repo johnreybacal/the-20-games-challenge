@@ -15,6 +15,8 @@ var spawn_y_min = -125
 var spawn_y_max = 125
 var is_playing = false
 var score = 0
+var high_score = 0
+const SESSION_HIGH_SCORE_KEY = "01_flappy_bird_high_score"
 
 var pipes: Array[Node2D] = []
 
@@ -25,6 +27,8 @@ func _ready():
         player.on_game_over.connect(on_game_over)
     hud.init()
     hud.on_restart.connect(get_tree().reload_current_scene)
+    high_score = Global.session_data.get(SESSION_HIGH_SCORE_KEY, 0)
+    hud.set_high_score(high_score)
 
 func _process(delta: float) -> void:
     if not is_playing:
@@ -65,6 +69,10 @@ func on_game_over():
     bg_parallax.autoscroll = Vector2.ZERO
     for node in get_tree().get_nodes_in_group("score_area"):
         call_deferred("disable_collision_of_node", node)
+
+    if score > high_score:
+        Global.session_data.set(SESSION_HIGH_SCORE_KEY, score)
+        hud.set_high_score(score)
     
 
 func on_score():

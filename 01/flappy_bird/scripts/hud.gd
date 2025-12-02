@@ -3,7 +3,8 @@ extends Control
 @onready var start_message: CenterContainer = $StartMessage
 @onready var game_over_panel: VBoxContainer = $GameOverPanel
 @onready var game_over_animation_player: AnimationPlayer = $GameOverPanel/AnimationPlayer
-@onready var counter: FlappyBird.Counter = $Counter
+@onready var score: FlappyBird.Counter = $Score
+@onready var high_score: FlappyBird.Counter = $HighScore
 
 signal on_restart()
 
@@ -23,9 +24,11 @@ func set_game_over_panel_visibility(is_visible: bool):
         game_over_animation_player.play("RESET")
     game_over_panel.visible = is_visible
 
-func set_score(score: int):
-    counter.set_value(score)
+func set_score(value: int):
+    score.set_value(value)
 
+func set_high_score(value: int):
+    high_score.set_value(value)
 
 func _on_restart_button_pressed() -> void:
     on_restart.emit()

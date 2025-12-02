@@ -1,6 +1,7 @@
 extends Node
 
 var has_p2 = false
+var session_data = {}
 
 func quit_to_main_menu(path = "/root/Node"):
     get_tree().paused = false
