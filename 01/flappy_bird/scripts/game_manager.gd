@@ -24,6 +24,7 @@ func _ready():
         player.on_score.connect(on_score)
         player.on_game_over.connect(on_game_over)
     hud.init()
+    hud.on_restart.connect(get_tree().reload_current_scene)
 
 func _process(delta: float) -> void:
     if not is_playing:
@@ -59,7 +60,7 @@ func on_start():
 
 func on_game_over():
     is_playing = false
-    hud.set_game_over_message_visibility(true)
+    hud.set_game_over_panel_visibility(true)
     floor_parallax.autoscroll = Vector2.ZERO
     bg_parallax.autoscroll = Vector2.ZERO
     for node in get_tree().get_nodes_in_group("score_area"):

@@ -82,6 +82,7 @@ I already created a flappy bird before by following a tutorial
 ### 2025-12-02
  - Parallax background
  - UI transition
+ - Add restart button
 
 ## Credits
 
