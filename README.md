@@ -50,3 +50,4 @@ These items are applicable on development of main menu. More entries in README.m
  - Add flappy bird game
  - Use `get_tree().change_scene_to_file` when changing scene
    - no longer manage pause and visibility for mainmenu
+ - Persist main menu state (session only)

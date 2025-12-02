@@ -4,7 +4,7 @@ class_name MainMenu
 @onready var game_list: ItemList = $VBoxContainer/HBoxContainer/GameList
 @onready var title: Label = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Title
 @onready var description: Label = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Description
-@onready var p2checkbox: CheckBox = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/P2Checkbox
+@onready var p2_checkbox: CheckBox = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/P2Checkbox
 @onready var play_button: Button = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PlayButton
 
 var game_details: Array[GameDetail] = [
@@ -23,16 +23,18 @@ var game_details: Array[GameDetail] = [
     ]
 
 func _ready():
+    var selected_game_index = Global.selected_game_index
     game_list.item_selected.connect(on_game_selected)
-    game_list.select(0)
-    on_game_selected(0)
+    game_list.select(selected_game_index)
+    on_game_selected(selected_game_index)
+    p2_checkbox.button_pressed = Global.has_p2
 
 func on_game_selected(index: int):
+    Global.selected_game_index = index
     var game_detail = game_details[index]
     title.text = game_detail.title
     description.text = game_detail.description
-    p2checkbox.visible = game_detail.has_p2
-    p2checkbox.button_pressed = false
+    p2_checkbox.visible = game_detail.has_p2
 
 func on_game_start():
     var selected = game_list.get_selected_items()
@@ -40,5 +42,5 @@ func on_game_start():
     var game_detail = game_details[selected.get(0)]
 
     if game_detail.scene_path:
-        Global.has_p2 = p2checkbox.button_pressed
+        Global.has_p2 = p2_checkbox.button_pressed
         get_tree().change_scene_to_file(game_detail.scene_path)

@@ -1,5 +1,6 @@
 extends Node
 
+var selected_game_index = 0
 var has_p2 = false
 var session_data = {}
 
