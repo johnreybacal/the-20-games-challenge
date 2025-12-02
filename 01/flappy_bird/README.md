@@ -89,6 +89,7 @@ I already created a flappy bird before by following a tutorial
  - Remove unsupported characters (export)
  - Wait for game over panel animation before enabling buttons
  - Theme overrides for buttons
+ - Adjust BG Parallax to use secondary flipped sprite
 
 
 ## Credits
