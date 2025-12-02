@@ -140,23 +140,25 @@ texture = ExtResource("2_r0mtt")
 
 [node name="RestartButton" type="Button" parent="GameOverPanel"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 24
 shortcut = SubResource("Shortcut_3mm8y")
 shortcut_in_tooltip = false
-text = " ⟲ restart "
+text = "restart"
 
 [node name="QuitButton" type="Button" parent="GameOverPanel"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 24
 shortcut = SubResource("Shortcut_wkvt6")
 shortcut_in_tooltip = false
-text = " ⏻ quit "
+text = "quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverPanel"]
 root_node = NodePath("../CenterContainer")

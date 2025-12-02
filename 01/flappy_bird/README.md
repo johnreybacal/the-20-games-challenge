@@ -86,6 +86,8 @@ I already created a flappy bird before by following a tutorial
  - Add restart button
  - Add high score (session only)
  - Add quit button
+ - Remove unsupported characters (export)
+ 
 
 ## Credits
 
