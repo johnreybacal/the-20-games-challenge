@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2no8re8iv36n"]
+
+[ext_resource type="Script" uid="uid://bm2fy0wjxqafx" path="res://02/breakout/scripts/paddle.gd" id="1_watsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tegc0"]
+size = Vector2(48, 4)
+
+[sub_resource type="Gradient" id="Gradient_jxi4k"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.20784314, 0.19607843, 0.21960784, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qi0fq"]
+gradient = SubResource("Gradient_jxi4k")
+
+[node name="Paddle" type="RigidBody2D" groups=["paddle"]]
+gravity_scale = 0.0
+script = ExtResource("1_watsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tegc0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.75, 0.0625)
+texture = SubResource("GradientTexture2D_qi0fq")

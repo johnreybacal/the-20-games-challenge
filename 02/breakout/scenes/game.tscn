@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkjivi1nn3kpn"]
+
+[ext_resource type="PackedScene" uid="uid://c2no8re8iv36n" path="res://02/breakout/scenes/paddle.tscn" id="1_7oa2v"]
+[ext_resource type="PackedScene" uid="uid://vd3ipnagjrxp" path="res://02/breakout/scenes/ball.tscn" id="2_1235b"]
+[ext_resource type="Script" uid="uid://dj1nxujy6arog" path="res://02/breakout/scripts/game_manager.gd" id="3_6qth1"]
+[ext_resource type="PackedScene" uid="uid://rr123sj1te7y" path="res://02/breakout/scenes/brick.tscn" id="4_wm4tv"]
+
+[sub_resource type="Gradient" id="Gradient_7oa2v"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.75686276, 0.7058824, 0.68235296, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1235b"]
+gradient = SubResource("Gradient_7oa2v")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qth1"]
+size = Vector2(2, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wm4tv"]
+size = Vector2(324, 2)
+
+[node name="Node" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(-4.172325e-07, 5.722046e-06)
+scale = Vector2(4.9999995, 2.8124998)
+texture = SubResource("GradientTexture2D_1235b")
+
+[node name="Paddle" parent="." instance=ExtResource("1_7oa2v")]
+position = Vector2(0, 88)
+
+[node name="Ball" parent="." instance=ExtResource("2_1235b")]
+position = Vector2(0, 75)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Left" type="StaticBody2D" parent="Walls" groups=["wall"]]
+position = Vector2(-160, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_6qth1")
+
+[node name="Right" type="StaticBody2D" parent="Walls" groups=["wall"]]
+position = Vector2(160, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_6qth1")
+
+[node name="Top" type="StaticBody2D" parent="Walls" groups=["wall"]]
+position = Vector2(0, -90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_wm4tv")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("3_6qth1")
+brick_scene = ExtResource("4_wm4tv")
