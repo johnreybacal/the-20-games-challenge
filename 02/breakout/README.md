@@ -17,21 +17,31 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - `Vector2`'s `bounce`
    - Returns the vector "bounced off" from a line defined by the given normal n perpendicular to the line.
  - [Difference between _process() and _physics_process()](https://forum.godotengine.org/t/difference-between-process-and-physics-process/4726)
+ - `Vector2`'s `direction_to`
+
 
 ## TODO:
- - Lose ball trigger
-   - respawn ball
+ - ~~Lose ball trigger~~
+   - ~~respawn ball~~
  - SFX
  - UI
    - Score
    - Life points
- - Aim ball before firing
-   - set paddle to middle
+ - ~~Aim ball before firing~~
+   - ~~set paddle to middle~~
  - Brick generation transition
  - Brick break particle?
+ - Fix ball displacing paddle on impact
+ - Read https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html
+
+## Groups
+ - paddle
+ - ball
+ - floor
 
 
 ## Development Log
+### 2025-12-03
  - Added paddle
    - follow mouse
    - reuse Pong AI slow down logic
@@ -44,7 +54,12 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - Added Brick
  - Added Game manager
    - generate Bricks on _ready
-
+### 2025-12-04
+ - Move paddle to middle if not in play
+ - Spawn ball on start and on losing ball
+ - Play ball on mouse left
+   - Set initial direction towards mouse
+     - Fixed ball bounce velocity calculation
 
 ## Credits
  - Bounce ball: https://forum.godotengine.org/t/how-to-bounce-a-ball-with-a-character-correctly-which-nodes-to-use/1400/2?u=johnreybacal

@@ -19,6 +19,7 @@ fill_from = Vector2(0.5, 0.5)
 process_mode = 1
 gravity_scale = 0.0
 script = ExtResource("1_5lcex")
+speed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w76b3")
