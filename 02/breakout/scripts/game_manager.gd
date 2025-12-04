@@ -27,14 +27,13 @@ func _ready():
     spawn_ball()
     reset_timer.timeout.connect(on_reset_timer_timeout)
 
-func _process(_delta: float):
-    if can_play and not is_playing and Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
+func _input(event: InputEvent):
+    if can_play and not is_playing and event.is_action_pressed("02_breakout_click"):
         var direction = ball.position.direction_to(get_global_mouse_position())
         ball.play(direction)
         is_playing = true
         paddle.is_playing = true
-
-
+    
 func spawn_ball():
     ball = ball_scene.instantiate() as Breakout.Ball
     ball.out_of_bound.connect(on_lose_ball)

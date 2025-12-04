@@ -18,6 +18,7 @@ Atari’s first successful game (Pong) was massively successful, but many compan
    - Returns the vector "bounced off" from a line defined by the given normal n perpendicular to the line.
  - [Difference between _process() and _physics_process()](https://forum.godotengine.org/t/difference-between-process-and-physics-process/4726)
  - `Vector2`'s `direction_to`
+ - `Node`'s [`_input`](https://docs.godotengine.org/en/stable/classes/class_node.html#class-node-private-method-input) hook
 
 
 ## TODO:
@@ -46,6 +47,9 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - ball
  - floor
 
+## Mapped Actions
+ - 02_breakout_click
+
 
 ## Development Log
 ### 2025-12-03
@@ -70,6 +74,7 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - Fix ball bouncing back and forth in a single line
  - Push paddle downward and return when hitting ball
  - Updated paddle movement
+ - Use `_input` callback instead of `_process` for listening for input
 
 ## Credits
  - Bounce ball: https://forum.godotengine.org/t/how-to-bounce-a-ball-with-a-character-correctly-which-nodes-to-use/1400/2?u=johnreybacal
