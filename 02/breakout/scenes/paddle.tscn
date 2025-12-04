@@ -13,8 +13,9 @@ colors = PackedColorArray(0.20784314, 0.19607843, 0.21960784, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qi0fq"]
 gradient = SubResource("Gradient_jxi4k")
 
-[node name="Paddle" type="RigidBody2D" groups=["paddle"]]
-gravity_scale = 0.0
+[node name="Paddle" type="CharacterBody2D" groups=["paddle"]]
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_watsx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

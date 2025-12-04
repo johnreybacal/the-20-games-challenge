@@ -8,7 +8,7 @@ I will do all games and log what I learned in a README file for each game
 ## Games
  - [01: Pong](01/pong/README.md)
  - [01: Flappy Bird](01/flappy_bird/README.md)
- - 02: Breakout
+ - [02: Breakout](02/breakout/README.md)
  - 02: Jetpack Joyride
  - 03: Space Invaders
  - 03: Frogger

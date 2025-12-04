@@ -32,7 +32,14 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - Brick generation transition
  - Brick break particle?
  - Fix ball displacing paddle on impact
- - Read https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html
+   - Don't know why it happens
+     - played around with weights (light ball, heavy paddle)
+     - converted Paddle into `CharacterBody2D` as ["They are not affected by physics at all"](https://docs.godotengine.org/en/stable/classes/class_characterbody2d.html#:~:text=They%20are%20not%20affected%20by%20physics%20at%20all)
+   - Turned this into paddle recoiling from the ball instead
+     - not a bug
+       - a feature
+         - and a cool one at that
+ - ~~Read https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html~~
 
 ## Groups
  - paddle
@@ -60,6 +67,9 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - Play ball on mouse left
    - Set initial direction towards mouse
      - Fixed ball bounce velocity calculation
+ - Fix ball bouncing back and forth in a single line
+ - Push paddle downward and return when hitting ball
+ - Updated paddle movement
 
 ## Credits
  - Bounce ball: https://forum.godotengine.org/t/how-to-bounce-a-ball-with-a-character-correctly-which-nodes-to-use/1400/2?u=johnreybacal
