@@ -31,5 +31,5 @@ func _physics_process(delta: float) -> void:
     # Return to initial y if pushed downwards
     if position.y != initial_y:
         var return_position = Vector2(position.x, initial_y)
-        velocity = position.direction_to(return_position) * move_speed * delta
+        velocity = position.direction_to(return_position) * move_speed * delta * 2
         move_and_slide()
