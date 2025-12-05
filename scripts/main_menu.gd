@@ -19,6 +19,12 @@ var game_details: Array[GameDetail] = [
             "Flappy bird was a mobile game from 2013. It was a sleeper hit, gaining sudden and massive popularity in 2014, likely due to attention from a popular YouTuber at that time. The game was removed from the App store after it’s sudden popularity due to negative media attention.",
             false,
             "res://01/flappy_bird/scenes/game.tscn"
+        ),
+        GameDetail.make(
+            "Breakout",
+            "Atari’s first successful game (Pong) was massively successful, but many companies made clones of the game, which eroded Atari’s profits. Their response was to make new and innovative games in order to stay ahead of the competition. Breakout was a direct descendent of Pong, but was designed for one player instead of two. It came out in 1976.",
+            false,
+            "res://02/breakout/scenes/game.tscn"
         )
     ]
 
