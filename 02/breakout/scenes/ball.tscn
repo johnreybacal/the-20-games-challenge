@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://vd3ipnagjrxp"]
+[gd_scene load_steps=7 format=3 uid="uid://vd3ipnagjrxp"]
 
 [ext_resource type="Script" uid="uid://d2gbsclse87ni" path="res://02/breakout/scripts/ball.gd" id="1_5lcex"]
-[ext_resource type="AudioStream" uid="uid://bbdfvusuug33n" path="res://01/pong/assets/tennis-ball-hit-386155.mp3" id="1_dv6wu"]
+[ext_resource type="AudioStream" uid="uid://bbdfvusuug33n" path="res://assets/audio/tennis-ball-hit-386155.mp3" id="1_dv6wu"]
+[ext_resource type="AudioStream" uid="uid://daxdyqnabs7xb" path="res://assets/audio/classic-game-action-positive-4-224403.mp3" id="3_7gokh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w76b3"]
 radius = 3.0
@@ -32,3 +33,6 @@ texture = SubResource("GradientTexture2D_aiqhu")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_dv6wu")
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7gokh")

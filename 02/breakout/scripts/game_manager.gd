@@ -7,6 +7,7 @@ extends Node2D
 @export var ball_spawn_position = Vector2(0, 75)
 
 @onready var reset_timer: Timer = $ResetTimer
+@onready var out_of_bound_sound: AudioStreamPlayer2D = $OutOfBoundSound
 
 var is_playing = false
 var can_play = true
@@ -41,6 +42,7 @@ func spawn_ball():
     add_sibling.call_deferred(ball)
 
 func on_lose_ball():
+    out_of_bound_sound.play()
     can_play = false
     is_playing = false
     paddle.is_playing = false

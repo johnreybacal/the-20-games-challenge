@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkjivi1nn3kpn"]
+[gd_scene load_steps=11 format=3 uid="uid://bkjivi1nn3kpn"]
 
 [ext_resource type="PackedScene" uid="uid://c2no8re8iv36n" path="res://02/breakout/scenes/paddle.tscn" id="1_7oa2v"]
 [ext_resource type="PackedScene" uid="uid://vd3ipnagjrxp" path="res://02/breakout/scenes/ball.tscn" id="2_1235b"]
 [ext_resource type="Script" uid="uid://dj1nxujy6arog" path="res://02/breakout/scripts/game_manager.gd" id="3_6qth1"]
 [ext_resource type="PackedScene" uid="uid://rr123sj1te7y" path="res://02/breakout/scenes/brick.tscn" id="4_wm4tv"]
+[ext_resource type="AudioStream" uid="uid://bgaw66oisdyde" path="res://assets/audio/die.ogg" id="5_bpi22"]
 
 [sub_resource type="Gradient" id="Gradient_7oa2v"]
 offsets = PackedFloat32Array(1)
@@ -71,3 +72,6 @@ ball_scene = ExtResource("2_1235b")
 [node name="ResetTimer" type="Timer" parent="GameManager"]
 wait_time = 0.75
 one_shot = true
+
+[node name="OutOfBoundSound" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("5_bpi22")

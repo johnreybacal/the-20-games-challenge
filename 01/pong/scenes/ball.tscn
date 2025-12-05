@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6xohchho5exu"]
 
 [ext_resource type="Script" uid="uid://ctxb66efg7jww" path="res://01/pong/scripts/ball.gd" id="1_aiqhu"]
-[ext_resource type="AudioStream" uid="uid://bbdfvusuug33n" path="res://01/pong/assets/tennis-ball-hit-386155.mp3" id="2_w76b3"]
+[ext_resource type="AudioStream" uid="uid://bbdfvusuug33n" path="res://assets/audio/tennis-ball-hit-386155.mp3" id="2_w76b3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w76b3"]
 radius = 5.0

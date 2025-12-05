@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cpowrt1ewu5f7"]
 
 [ext_resource type="Texture2D" uid="uid://bmfv75mf10jqw" path="res://01/pong/assets/confetti.png" id="1_rjxw5"]
-[ext_resource type="AudioStream" uid="uid://daxdyqnabs7xb" path="res://01/pong/assets/classic-game-action-positive-4-224403.mp3" id="2_alr52"]
+[ext_resource type="AudioStream" uid="uid://daxdyqnabs7xb" path="res://assets/audio/classic-game-action-positive-4-224403.mp3" id="2_alr52"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_alr52"]
 particles_animation = true

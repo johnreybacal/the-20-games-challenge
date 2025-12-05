@@ -24,7 +24,7 @@ Atari’s first successful game (Pong) was massively successful, but many compan
 ## TODO:
  - ~~Lose ball trigger~~
    - ~~respawn ball~~
- - SFX
+ - ~~SFX~~
  - UI
    - Score
    - Life points
@@ -75,6 +75,8 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - Push paddle downward and return when hitting ball
  - Updated paddle movement
  - Use `_input` callback instead of `_process` for listening for input
+### 2025-12-05
+ - Reused SFX from other games
 
 ## Credits
  - Bounce ball: https://forum.godotengine.org/t/how-to-bounce-a-ball-with-a-character-correctly-which-nodes-to-use/1400/2?u=johnreybacal

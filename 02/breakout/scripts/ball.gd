@@ -1,6 +1,8 @@
 extends RigidBody2D
 
 @export var speed = 50
+@onready var hit_sound: AudioStreamPlayer2D = $HitSound
+@onready var score_sound: AudioStreamPlayer2D = $ScoreSound
 
 signal out_of_bound()
 
@@ -11,6 +13,8 @@ func _physics_process(delta: float) -> void:
         return
     var collision_info = move_and_collide(linear_velocity * delta)
     if collision_info:
+        play_hit_sound()
+
         var bounce_velocity = linear_velocity.bounce(collision_info.get_normal()).normalized()
 
         # To avoid getting stuck in a single line
@@ -27,6 +31,8 @@ func _physics_process(delta: float) -> void:
 
         var collider: Node2D = collision_info.get_collider()
         if collider.is_in_group("brick"):
+            score_sound.pitch_scale = randf_range(1.75, 2)
+            score_sound.play()
             collider.queue_free()
 
         if collider.is_in_group("floor"):
@@ -38,8 +44,12 @@ func _physics_process(delta: float) -> void:
             var paddle = (collider as Breakout.Paddle)
             paddle.velocity = Vector2(0, 150)
             paddle.move_and_slide()
-            
+
+func play_hit_sound():
+    hit_sound.pitch_scale = randf_range(0.75, 1.25)
+    hit_sound.play()
 
 func play(direction: Vector2):
     is_in_play = true
     linear_velocity = Vector2(speed * direction.x, speed * direction.y)
+    play_hit_sound()
