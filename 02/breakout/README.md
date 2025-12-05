@@ -77,6 +77,8 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - Use `_input` callback instead of `_process` for listening for input
 ### 2025-12-05
  - Reused SFX from other games
+ - Increase ball speed on every brick hit
+ - Only push down paddle when ball hit from above
 
 ## Credits
  - Bounce ball: https://forum.godotengine.org/t/how-to-bounce-a-ball-with-a-character-correctly-which-nodes-to-use/1400/2?u=johnreybacal

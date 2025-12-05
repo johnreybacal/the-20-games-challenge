@@ -27,20 +27,21 @@ func _physics_process(delta: float) -> void:
 
         bounce_velocity = bounce_velocity.normalized()
 
-        linear_velocity = Vector2(speed * bounce_velocity.x, speed * bounce_velocity.y)
+        set_moving_direction(bounce_velocity)
 
         var collider: Node2D = collision_info.get_collider()
         if collider.is_in_group("brick"):
             score_sound.pitch_scale = randf_range(1.75, 2)
             score_sound.play()
             collider.queue_free()
+            increase_speed()
 
         if collider.is_in_group("floor"):
             out_of_bound.emit()
             queue_free()
         
         # Push paddle downwards
-        if collider.is_in_group("paddle"):
+        if collider.is_in_group("paddle") and bounce_velocity.y < 0:
             var paddle = (collider as Breakout.Paddle)
             paddle.velocity = Vector2(0, 150)
             paddle.move_and_slide()
@@ -53,3 +54,11 @@ func play(direction: Vector2):
     is_in_play = true
     linear_velocity = Vector2(speed * direction.x, speed * direction.y)
     play_hit_sound()
+
+func increase_speed():
+    speed += 1
+    set_moving_direction(linear_velocity)
+
+func set_moving_direction(direction: Vector2):
+    var normal = direction.normalized()
+    linear_velocity = Vector2(speed * normal.x, speed * normal.y)
