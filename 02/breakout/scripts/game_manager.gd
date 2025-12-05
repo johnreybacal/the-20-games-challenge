@@ -21,18 +21,23 @@ var bricks_left = 0
 const SESSION_HIGH_SCORE_KEY = "02_breakout_high_score"
 
 func _ready():
-    var pos_x = -152
+    var pos_x = -136
     var pos_y = -70
-    for row in range(2, 3):
-        var x = pos_x
-        for col in range(5, 20, 5):
+    var color_index = 0
+    for row in range(9):
+        var x = pos_x + (16 * row)
+        for col in range(row, 18 - row):
             var brick: Node2D = brick_scene.instantiate()
             brick.position = Vector2(x, pos_y)
-            brick.modulate = colors[row]
+            brick.modulate = colors[color_index]
             add_child(brick)
             x += 16
             bricks_left += 1
         pos_y += 6.5
+        color_index += 1
+        if color_index == len(colors):
+            color_index = 0
+    
     spawn_ball()
     reset_timer.timeout.connect(on_reset_timer_timeout)
 
