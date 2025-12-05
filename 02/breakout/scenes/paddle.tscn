@@ -17,6 +17,7 @@ gradient = SubResource("Gradient_jxi4k")
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_watsx")
+move_speed = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tegc0")

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed = 200
+@export var move_speed = 500
 
 var is_playing = false
 var initial_y = position.y
@@ -31,5 +31,5 @@ func _physics_process(delta: float) -> void:
     # Return to initial y if pushed downwards
     if position.y != initial_y:
         var return_position = Vector2(position.x, initial_y)
-        velocity = position.direction_to(return_position) * move_speed * delta * 2
+        velocity = position.direction_to(return_position) * move_speed * delta
         move_and_slide()
