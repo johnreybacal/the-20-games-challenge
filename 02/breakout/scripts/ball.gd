@@ -4,7 +4,8 @@ extends RigidBody2D
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var score_sound: AudioStreamPlayer2D = $ScoreSound
 
-signal out_of_bound()
+signal on_out_of_bound()
+signal on_score()
 
 var is_in_play = false
 
@@ -35,9 +36,10 @@ func _physics_process(delta: float) -> void:
             score_sound.play()
             collider.queue_free()
             increase_speed()
+            on_score.emit()
 
         if collider.is_in_group("floor"):
-            out_of_bound.emit()
+            on_out_of_bound.emit()
             queue_free()
         
         # Push paddle downwards

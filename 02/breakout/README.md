@@ -25,9 +25,9 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - ~~Lose ball trigger~~
    - ~~respawn ball~~
  - ~~SFX~~
- - UI
-   - Score
-   - Life points
+ - ~~UI~~
+   - ~~Score~~
+   - ~~Life points~~
  - ~~Aim ball before firing~~
    - ~~set paddle to middle~~
  - Brick generation transition
@@ -79,6 +79,12 @@ Atari’s first successful game (Pong) was massively successful, but many compan
  - Reused SFX from other games
  - Increase ball speed on every brick hit
  - Only push down paddle when ball hit from above
+ - Added UI
+   - Life
+   - Score
+   - High score
+   - Pause
+   - Game over
 
 ## Credits
  - Bounce ball: https://forum.godotengine.org/t/how-to-bounce-a-ball-with-a-character-correctly-which-nodes-to-use/1400/2?u=johnreybacal

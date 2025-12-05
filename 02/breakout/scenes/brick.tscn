@@ -11,6 +11,7 @@ colors = PackedColorArray(1, 1, 1, 1)
 gradient = SubResource("Gradient_l7gsq")
 
 [node name="Brick" type="StaticBody2D" groups=["brick"]]
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w6nxn")

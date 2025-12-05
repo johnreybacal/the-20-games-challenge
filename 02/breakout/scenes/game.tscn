@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkjivi1nn3kpn"]
+[gd_scene load_steps=12 format=3 uid="uid://bkjivi1nn3kpn"]
 
 [ext_resource type="PackedScene" uid="uid://c2no8re8iv36n" path="res://02/breakout/scenes/paddle.tscn" id="1_7oa2v"]
 [ext_resource type="PackedScene" uid="uid://vd3ipnagjrxp" path="res://02/breakout/scenes/ball.tscn" id="2_1235b"]
 [ext_resource type="Script" uid="uid://dj1nxujy6arog" path="res://02/breakout/scripts/game_manager.gd" id="3_6qth1"]
 [ext_resource type="PackedScene" uid="uid://rr123sj1te7y" path="res://02/breakout/scenes/brick.tscn" id="4_wm4tv"]
 [ext_resource type="AudioStream" uid="uid://bgaw66oisdyde" path="res://assets/audio/die.ogg" id="5_bpi22"]
+[ext_resource type="PackedScene" uid="uid://c2goqdyit1slx" path="res://02/breakout/scenes/hud.tscn" id="6_nx3bt"]
 
 [sub_resource type="Gradient" id="Gradient_7oa2v"]
 offsets = PackedFloat32Array(1)
@@ -22,6 +23,24 @@ size = Vector2(324, 2)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wm4tv"]
 
 [node name="Node" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("6_nx3bt")]
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("paddle", "hud")]
+script = ExtResource("3_6qth1")
+paddle = NodePath("../Paddle")
+hud = NodePath("../CanvasLayer/HUD")
+brick_scene = ExtResource("4_wm4tv")
+ball_scene = ExtResource("2_1235b")
+
+[node name="ResetTimer" type="Timer" parent="GameManager"]
+wait_time = 0.75
+one_shot = true
+
+[node name="OutOfBoundSound" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("5_bpi22")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -62,16 +81,3 @@ position = Vector2(0, 105)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Floor"]
 shape = SubResource("WorldBoundaryShape2D_wm4tv")
-
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("paddle")]
-script = ExtResource("3_6qth1")
-paddle = NodePath("../Paddle")
-brick_scene = ExtResource("4_wm4tv")
-ball_scene = ExtResource("2_1235b")
-
-[node name="ResetTimer" type="Timer" parent="GameManager"]
-wait_time = 0.75
-one_shot = true
-
-[node name="OutOfBoundSound" type="AudioStreamPlayer2D" parent="GameManager"]
-stream = ExtResource("5_bpi22")
