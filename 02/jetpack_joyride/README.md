@@ -21,3 +21,9 @@ The game features a character with a machine-gun jetpack. When holding the input
  - Setup game
  - Basic player movement
    - Falling and thrusting upward
+ - Move player forward endlessly
+ - Temporary parallax background (reused flappy bird assets)
+ - Camera follow
+   - Put camera as child of player
+   - Set camera limits for top and bottom as to be limited from following player's Y position changes
+   

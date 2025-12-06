@@ -19,4 +19,5 @@ script = ExtResource("1_tul4c")
 shape = SubResource("RectangleShape2D_ger1x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
 texture = SubResource("GradientTexture2D_8iksn")
