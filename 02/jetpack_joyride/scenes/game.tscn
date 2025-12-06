@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3qc3vlylhi6e"]
+
+[ext_resource type="PackedScene" uid="uid://hqugdtlgloud" path="res://02/jetpack_joyride/scenes/player.tscn" id="1_ix8h4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ix8h4"]
+
+[sub_resource type="Gradient" id="Gradient_ix8h4"]
+offsets = PackedFloat32Array(0.0023094688)
+colors = PackedColorArray(0.86786294, 0.613784, 0.6331274, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3k8lr"]
+gradient = SubResource("Gradient_ix8h4")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y114n"]
+
+[node name="Node" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_ix8h4")]
+position = Vector2(-477, 233)
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(0, -360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_ix8h4")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 265)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(2.69413e-05, 48)
+scale = Vector2(19.999998, 1.5)
+texture = SubResource("GradientTexture2D_3k8lr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_y114n")
+
+[node name="Camera2D" type="Camera2D" parent="."]

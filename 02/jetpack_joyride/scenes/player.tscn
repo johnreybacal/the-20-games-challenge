@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://hqugdtlgloud"]
+
+[ext_resource type="Script" uid="uid://ctm8mfoucja2v" path="res://02/jetpack_joyride/scripts/player.gd" id="1_tul4c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ger1x"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_tul4c"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8iksn"]
+gradient = SubResource("Gradient_tul4c")
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_tul4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ger1x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_8iksn")
