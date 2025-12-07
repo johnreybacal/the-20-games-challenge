@@ -11,6 +11,7 @@ The game features a character with a machine-gun jetpack. When holding the input
      - `move_towards` transition values by step / constant speed
      - `lerp` transition values by percentage / ease in
  - `get_gravity`: uses calculated gravity from project and Area2D gravity overrides
+ - [`GPUParticles2D` only collides against `LightOcluder2D`](https://forum.godotengine.org/t/how-to-make-particles2d-collide-with-collisionshape2d-and-tilemap/95813/4?u=johnreybacal)
 
 
 ## Mapped Actions
@@ -34,6 +35,7 @@ The game features a character with a machine-gun jetpack. When holding the input
    - 5 Layer parallax background
    - Floor
  - Added thrust particles
+   - Bounce on floor
  - Improved control responsiveness
    - Added space to `02_jetpack_joyride_click`
 

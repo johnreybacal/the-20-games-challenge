@@ -157,6 +157,7 @@ z_index = 10
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_t7joc")
 position = Vector2(-13, 15)
+emitting = false
 amount = 40
 texture = ExtResource("5_142df")
 process_material = SubResource("ParticleProcessMaterial_vw8d7")
