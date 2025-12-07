@@ -10,6 +10,7 @@ The game features a character with a machine-gun jetpack. When holding the input
    - Difference with `move_towards`
      - `move_towards` transition values by step / constant speed
      - `lerp` transition values by percentage / ease in
+ - `get_gravity`: uses calculated gravity from project and Area2D gravity overrides
 
 
 ## Mapped Actions
@@ -26,4 +27,13 @@ The game features a character with a machine-gun jetpack. When holding the input
  - Camera follow
    - Put camera as child of player
    - Set camera limits for top and bottom as to be limited from following player's Y position changes
-   
+### 2025-12-07
+ - Use `get_gravity` instead of scripting it
+ - Added Jungle Pack assets
+   - Player: running, flying, jumping animation
+   - 5 Layer parallax background
+   - Floor
+
+
+## Credits
+ - Jungle Pack: https://jesse-m.itch.io/jungle-pack

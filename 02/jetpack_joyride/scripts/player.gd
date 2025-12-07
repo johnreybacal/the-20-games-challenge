@@ -1,17 +1,18 @@
 extends CharacterBody2D
 
-@export var gravity = 9.8
 @export var run_speed = 300
 @export var thrust: float = -500
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var is_flying = false
 
 func _input(event: InputEvent) -> void:
     is_flying = event.is_action("02_jetpack_joyride_click")
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
     if not is_on_floor():
-        velocity.y += gravity
+        velocity += get_gravity() * delta
 
     if is_flying:
         velocity.y = lerp(velocity.y, thrust, .1)
@@ -19,3 +20,15 @@ func _physics_process(_delta: float) -> void:
     velocity.x = run_speed
 
     move_and_slide()
+    
+
+func _process(_delta: float) -> void:
+    play_animation()
+
+func play_animation():
+    if is_on_floor():
+        animated_sprite_2d.play("running")
+    elif is_flying:
+        animated_sprite_2d.play("flying")
+    else:
+        animated_sprite_2d.play("falling")
