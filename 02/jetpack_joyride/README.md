@@ -14,6 +14,17 @@ The game features a character with a machine-gun jetpack. When holding the input
  - [`GPUParticles2D` only collides against `LightOcluder2D`](https://forum.godotengine.org/t/how-to-make-particles2d-collide-with-collisionshape2d-and-tilemap/95813/4?u=johnreybacal)
 
 
+## TODO
+ - UI
+   - paused
+   - game over
+   - score: distance
+     - high score
+ - obstacles
+   - missile birds
+   - running animal
+   - thorns
+
 ## Mapped Actions
  - 02_jetpack_joyride_click
 
@@ -38,7 +49,10 @@ The game features a character with a machine-gun jetpack. When holding the input
    - Bounce on floor
  - Improved control responsiveness
    - Added space to `02_jetpack_joyride_click`
+ - Added bird (no interaction yet)
+
 
 
 ## Credits
  - Jungle Pack: https://jesse-m.itch.io/jungle-pack
+ - Bird: https://ankousse26.itch.io/bird-flying-pixel-art-animation-free

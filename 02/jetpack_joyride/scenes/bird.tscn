@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqv3oydrn6xca"]
+
+[ext_resource type="Texture2D" uid="uid://vqtbjrgna4gm" path="res://02/jetpack_joyride/assets/sprites/bird.png" id="1_33td3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_387ao"]
+size = Vector2(55, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33td3"]
+atlas = ExtResource("1_33td3")
+region = Rect2(0, 0, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_387ao"]
+atlas = ExtResource("1_33td3")
+region = Rect2(68, 0, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tb17"]
+atlas = ExtResource("1_33td3")
+region = Rect2(136, 0, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8otk"]
+atlas = ExtResource("1_33td3")
+region = Rect2(204, 0, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4p2n"]
+atlas = ExtResource("1_33td3")
+region = Rect2(272, 0, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggxpp"]
+atlas = ExtResource("1_33td3")
+region = Rect2(340, 0, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwp2y"]
+atlas = ExtResource("1_33td3")
+region = Rect2(408, 0, 68, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byhoo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33td3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_387ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tb17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8otk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4p2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggxpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwp2y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Bird" type="RigidBody2D"]
+gravity_scale = 0.0
+constant_force = Vector2(-500, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 7.5)
+shape = SubResource("RectangleShape2D_387ao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 10
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_byhoo")
+autoplay = "default"
+frame_progress = 0.36406898

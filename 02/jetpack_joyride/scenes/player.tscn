@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dt41fi7v28dws" path="res://02/jetpack_joyride/assets/sprites/leaf.png" id="5_142df"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ger1x"]
-size = Vector2(62, 96)
+size = Vector2(34, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_142df"]
 atlas = ExtResource("2_8iksn")
@@ -141,7 +141,7 @@ collision_bounce = 0.5
 script = ExtResource("1_tul4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_ger1x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -149,7 +149,7 @@ z_index = 10
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_vw8d7")
-animation = &"running"
+animation = &"falling"
 autoplay = "running"
 
 [node name="Particles" type="GPUParticles2D" parent="."]
