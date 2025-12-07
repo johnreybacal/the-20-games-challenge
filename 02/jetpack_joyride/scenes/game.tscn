@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3qc3vlylhi6e"]
+[gd_scene load_steps=11 format=3 uid="uid://c3qc3vlylhi6e"]
 
 [ext_resource type="PackedScene" uid="uid://hqugdtlgloud" path="res://02/jetpack_joyride/scenes/player.tscn" id="1_ix8h4"]
 [ext_resource type="Texture2D" uid="uid://dpivnclj7y17h" path="res://02/jetpack_joyride/assets/sprites/floor.png" id="2_ww2wc"]
@@ -11,6 +11,9 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ix8h4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y114n"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ww2wc"]
+polygon = PackedVector2Array(-226, 62, -228, -12, 101, -13, 101, 62)
 
 [node name="Node" type="Node"]
 
@@ -34,7 +37,7 @@ shape = SubResource("WorldBoundaryShape2D_ix8h4")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 z_index = 2
-position = Vector2(0, 312)
+position = Vector2(0, 315)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(0, -10)
@@ -44,6 +47,10 @@ shape = SubResource("WorldBoundaryShape2D_y114n")
 scroll_offset = Vector2(0, 13)
 repeat_size = Vector2(320, 0)
 repeat_times = 7
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Floor/Parallax2D"]
+position = Vector2(435, -13)
+occluder = SubResource("OccluderPolygon2D_ww2wc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor/Parallax2D"]
 z_index = 6
