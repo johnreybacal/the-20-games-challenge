@@ -33,6 +33,9 @@ The game features a character with a machine-gun jetpack. When holding the input
    - Player: running, flying, jumping animation
    - 5 Layer parallax background
    - Floor
+ - Added thrust particles
+ - Improved control responsiveness
+   - Added space to `02_jetpack_joyride_click`
 
 
 ## Credits

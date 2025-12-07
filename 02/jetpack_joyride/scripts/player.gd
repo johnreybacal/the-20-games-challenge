@@ -4,11 +4,15 @@ extends CharacterBody2D
 @export var thrust: float = -500
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var particles: GPUParticles2D = $Particles
 
 var is_flying = false
 
 func _input(event: InputEvent) -> void:
-    is_flying = event.is_action("02_jetpack_joyride_click")
+    if event.is_action_pressed("02_jetpack_joyride_click"):
+        is_flying = true
+    if event.is_action_released("02_jetpack_joyride_click"):
+        is_flying = false
 
 func _physics_process(delta: float) -> void:
     if not is_on_floor():
@@ -24,6 +28,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
     play_animation()
+    particles.emitting = is_flying
 
 func play_animation():
     if is_on_floor():

@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://hqugdtlgloud"]
+[gd_scene load_steps=24 format=3 uid="uid://hqugdtlgloud"]
 
 [ext_resource type="Script" uid="uid://ctm8mfoucja2v" path="res://02/jetpack_joyride/scripts/player.gd" id="1_tul4c"]
 [ext_resource type="Texture2D" uid="uid://cunc42ekyrbiw" path="res://02/jetpack_joyride/assets/sprites/run.png" id="2_8iksn"]
 [ext_resource type="Texture2D" uid="uid://cgqyt462rdu2k" path="res://02/jetpack_joyride/assets/sprites/fall.png" id="2_vyp83"]
 [ext_resource type="Texture2D" uid="uid://dvfqwsgdj6ad7" path="res://02/jetpack_joyride/assets/sprites/jump.png" id="2_w85ty"]
+[ext_resource type="Texture2D" uid="uid://bmfv75mf10jqw" path="res://01/pong/assets/confetti.png" id="5_142df"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ger1x"]
 size = Vector2(56, 82)
@@ -96,6 +97,51 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t7joc"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_2c1n3"]
+offsets = PackedFloat32Array(0.34190232, 0.37789202, 0.57583547, 0.5989717, 0.7969152, 0.81491005)
+colors = PackedColorArray(0.9411765, 0.89411765, 0.5686275, 1, 0.73333335, 0.78431374, 0.3882353, 1, 0.73333335, 0.78431374, 0.3882353, 1, 0.39607844, 0.54901963, 0.34509805, 1, 0.39607844, 0.54901963, 0.34509805, 1, 0.19215687, 0.4117647, 0.30588236, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_17jd6"]
+gradient = SubResource("Gradient_2c1n3")
+
+[sub_resource type="Curve" id="Curve_5k72v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.67951804, 0.8680812), 0.0, 0.0, 0, 0, Vector2(0.98795176, 0.1665129), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_su1m5"]
+curve = SubResource("Curve_5k72v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vw8d7"]
+lifetime_randomness = 0.15
+particle_flag_disable_z = true
+angle_min = -64.79999
+angle_max = 201.50002
+direction = Vector3(0, 20, 0)
+spread = 30.0
+initial_velocity_min = 174.37
+initial_velocity_max = 327.18
+angular_velocity_min = -123.97002
+angular_velocity_max = 42.119984
+gravity = Vector3(0, 98, 0)
+linear_accel_min = 1.9399977
+linear_accel_max = 13.179997
+radial_accel_min = -27.810001
+radial_accel_max = 27.819998
+damping_min = 35.321003
+damping_max = 48.345
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_su1m5")
+color_initial_ramp = SubResource("GradientTexture1D_17jd6")
+anim_speed_min = 0.19999999
+anim_speed_max = 2.24
+anim_offset_max = 0.1391
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_tul4c")
 
@@ -107,5 +153,15 @@ z_index = 10
 texture_filter = 1
 scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_vw8d7")
-animation = &"falling"
+animation = &"running"
 autoplay = "running"
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+z_index = 10
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_t7joc")
+position = Vector2(-22, 26)
+emitting = false
+amount = 40
+texture = ExtResource("5_142df")
+process_material = SubResource("ParticleProcessMaterial_vw8d7")
