@@ -78,6 +78,8 @@ The game features a character with a machine-gun jetpack. When holding the input
      - remove collision mask/layer
      - fully opaque
      - higher Z index
+ - Adjust player movement
+ - Add more leaf particle
 
 
 

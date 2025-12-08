@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 @export var run_speed: float = 300
-@export var thrust: float = -500
+@export var thrust: float = -750
+@export var gravity_scale: float = 1.75
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var particles: GPUParticles2D = $Particles
@@ -22,7 +23,7 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
     if not is_on_floor():
-        velocity += get_gravity() * delta
+        velocity += get_gravity() * gravity_scale * delta
 
     if is_playing:
         if is_flying:
