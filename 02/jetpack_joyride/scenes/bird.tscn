@@ -62,7 +62,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Bird" type="RigidBody2D"]
+[node name="Bird" type="RigidBody2D" groups=["obstacle"]]
 gravity_scale = 0.0
 constant_force = Vector2(-500, 0)
 

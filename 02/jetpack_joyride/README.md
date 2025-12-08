@@ -22,8 +22,14 @@ The game features a character with a machine-gun jetpack. When holding the input
      - high score
  - obstacles
    - missile birds
+     - lock on and warning
    - running animal
    - thorns
+
+
+## Groups
+ - player
+ - obstacle
 
 ## Mapped Actions
  - 02_jetpack_joyride_click
@@ -50,6 +56,14 @@ The game features a character with a machine-gun jetpack. When holding the input
  - Improved control responsiveness
    - Added space to `02_jetpack_joyride_click`
  - Added bird (no interaction yet)
+### 2025-12-08
+ - Die on obstacle
+   - die animation (falling / landed)
+ - Rename collision layers
+   - 1: default
+   - 2: floor
+ - Set player's `platform_floor_layers` to `floor`
+   - this avoids added velocity from hitting obstacle from above
 
 
 

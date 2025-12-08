@@ -20,6 +20,8 @@ polygon = PackedVector2Array(-226, 62, -228, -12, 101, -13, 101, 62)
 
 [node name="Player" parent="." instance=ExtResource("1_ix8h4")]
 position = Vector2(-483, 269)
+collision_mask = 3
+platform_floor_layers = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 z_index = 10
@@ -39,6 +41,8 @@ shape = SubResource("WorldBoundaryShape2D_ix8h4")
 [node name="Floor" type="StaticBody2D" parent="."]
 z_index = 2
 position = Vector2(0, 315)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(0, -10)
@@ -125,4 +129,4 @@ scale = Vector2(3.3385417, 3.3333333)
 texture = ExtResource("3_uuxcq")
 
 [node name="Bird" parent="." instance=ExtResource("8_aoo7s")]
-position = Vector2(610, 131)
+position = Vector2(608, 234)
