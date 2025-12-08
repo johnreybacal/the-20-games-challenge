@@ -71,6 +71,13 @@ The game features a character with a machine-gun jetpack. When holding the input
    - Disable all obstacles on game over
  - Gradually increase player speed
  - Record distance traveled on death
+ - Improved warning
+   - spawn near player, clamped to game area
+   - 75% opaque
+   - when imminent:
+     - remove collision mask/layer
+     - fully opaque
+     - higher Z index
 
 
 

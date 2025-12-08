@@ -21,12 +21,14 @@ func increase_speed():
     player.run_speed += 10
 
 func reset_bird_timer():
-    bird_timer.wait_time = randf_range(0, 5)
+    bird_timer.wait_time = randf_range(0, 2)
     bird_timer.start()
 
 func spawn_bird_warning():
     var warning: JetpackJoyride.Warning = warning_scene.instantiate()
-    warning.position = Vector2(player.position.x + 1100, randf_range(-300, 275))
+    var y = randf_range(player.position.y - 150, player.position.y + 150)
+    y = clampf(y, -333, 269)
+    warning.position = Vector2(player.position.x + 1100, y)
     warning.player = player
     warning.warning_end.connect(spawn_bird)
     warnings.append(warning)
