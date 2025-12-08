@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3qc3vlylhi6e"]
+[gd_scene load_steps=14 format=3 uid="uid://c3qc3vlylhi6e"]
 
 [ext_resource type="PackedScene" uid="uid://hqugdtlgloud" path="res://02/jetpack_joyride/scenes/player.tscn" id="1_ix8h4"]
 [ext_resource type="Texture2D" uid="uid://dpivnclj7y17h" path="res://02/jetpack_joyride/assets/sprites/floor.png" id="2_ww2wc"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dv354y2lwpw1v" path="res://02/jetpack_joyride/assets/sprites/plx-4.png" id="3_v41ut"]
 [ext_resource type="Texture2D" uid="uid://ch6i3j25yjl3l" path="res://02/jetpack_joyride/assets/sprites/plx-5.png" id="3_ww2wc"]
 [ext_resource type="Texture2D" uid="uid://cqyrmiu50soh" path="res://02/jetpack_joyride/assets/sprites/plx-2.png" id="4_u3ts5"]
-[ext_resource type="PackedScene" uid="uid://dqv3oydrn6xca" path="res://02/jetpack_joyride/scenes/bird.tscn" id="8_aoo7s"]
+[ext_resource type="Script" uid="uid://cd4evaqd6xpop" path="res://02/jetpack_joyride/scripts/game_manager.gd" id="8_aoo7s"]
+[ext_resource type="PackedScene" uid="uid://c0o0uy36y4td8" path="res://02/jetpack_joyride/scenes/warning.tscn" id="9_m4jro"]
+[ext_resource type="PackedScene" uid="uid://dqv3oydrn6xca" path="res://02/jetpack_joyride/scenes/bird.tscn" id="10_7hu4i"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ix8h4"]
 
@@ -128,5 +130,11 @@ position = Vector2(-0.9999685, -1.1444092e-05)
 scale = Vector2(3.3385417, 3.3333333)
 texture = ExtResource("3_uuxcq")
 
-[node name="Bird" parent="." instance=ExtResource("8_aoo7s")]
-position = Vector2(608, 234)
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("8_aoo7s")
+player = NodePath("../Player")
+warning_scene = ExtResource("9_m4jro")
+bird_scene = ExtResource("10_7hu4i")
+
+[node name="BirdTimer" type="Timer" parent="GameManager"]
+one_shot = true

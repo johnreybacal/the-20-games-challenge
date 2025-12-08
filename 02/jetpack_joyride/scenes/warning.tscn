@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://c0o0uy36y4td8"]
+
+[ext_resource type="Texture2D" uid="uid://ddp54xtqc3iko" path="res://02/jetpack_joyride/assets/sprites/warning.png" id="1_bf6kj"]
+[ext_resource type="Script" uid="uid://bkkp40ilhypv5" path="res://02/jetpack_joyride/scripts/warning.gd" id="2_laytx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_laytx"]
+size = Vector2(46, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laytx"]
+atlas = ExtResource("1_bf6kj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpvfi"]
+atlas = ExtResource("1_bf6kj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apxry"]
+atlas = ExtResource("1_bf6kj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wymly"]
+atlas = ExtResource("1_bf6kj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5wi5"]
+atlas = ExtResource("1_bf6kj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tggf6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laytx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpvfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apxry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wymly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5wi5")
+}],
+"loop": true,
+"name": &"warn",
+"speed": 10.0
+}]
+
+[node name="Warning" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 4
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("2_laytx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_laytx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 10
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tggf6")
+autoplay = "default"
+frame_progress = 0.5719012
+
+[node name="WarningTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

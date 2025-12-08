@@ -21,8 +21,8 @@ The game features a character with a machine-gun jetpack. When holding the input
    - score: distance
      - high score
  - obstacles
-   - missile birds
-     - lock on and warning
+   - ~~missile birds~~
+     - ~~lock on and warning~~
    - running animal
    - thorns
 
@@ -64,9 +64,15 @@ The game features a character with a machine-gun jetpack. When holding the input
    - 2: floor
  - Set player's `platform_floor_layers` to `floor`
    - this avoids added velocity from hitting obstacle from above
+ - Add lock on warning
+   - Follow player
+   - Spawn bird after warning
+ - Added game over trigger
+   - Disable all obstacles on game over
 
 
 
 ## Credits
  - Jungle Pack: https://jesse-m.itch.io/jungle-pack
  - Bird: https://ankousse26.itch.io/bird-flying-pixel-art-animation-free
+ - Warning Sign by PixyFantasyStudios: https://pixyfantasystudios.itch.io/warning-sign

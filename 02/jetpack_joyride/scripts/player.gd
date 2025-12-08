@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var particles: GPUParticles2D = $Particles
 
+signal died()
+
 var is_flying = false
 var is_playing = true
 var is_dying = false
@@ -27,20 +29,22 @@ func _physics_process(delta: float) -> void:
             velocity.y = lerp(velocity.y, thrust, .1)
             
         velocity.x = run_speed
-
-        for i in get_slide_collision_count():
-            var collision = get_slide_collision(i)
-            var collider: Node2D = collision.get_collider()
-            if collider.is_in_group("obstacle"):
-                collider.collision_mask = 0
-                collider.collision_layer = 0
-                is_playing = false
-                is_flying = false
-                is_dying = true
-                break
     else:
         if is_on_floor():
             velocity.x = lerp(velocity.x, 0.0, 0.025)
+
+    for i in get_slide_collision_count():
+        var collision = get_slide_collision(i)
+        var collider: Node2D = collision.get_collider()
+        if collider.is_in_group("obstacle"):
+            collider.collision_mask = 0
+            collider.collision_layer = 0
+            if is_playing:
+                is_playing = false
+                is_flying = false
+                is_dying = true
+                died.emit()
+            break
 
     move_and_slide()
 
