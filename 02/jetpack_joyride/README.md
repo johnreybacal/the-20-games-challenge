@@ -69,6 +69,8 @@ The game features a character with a machine-gun jetpack. When holding the input
    - Spawn bird after warning
  - Added game over trigger
    - Disable all obstacles on game over
+ - Gradually increase player speed
+ - Record distance traveled on death
 
 
 

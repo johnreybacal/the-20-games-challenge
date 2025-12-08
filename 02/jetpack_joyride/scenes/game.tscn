@@ -30,8 +30,7 @@ z_index = 10
 position = Vector2(483, -207)
 limit_top = -360
 limit_bottom = 360
-position_smoothing_enabled = true
-position_smoothing_speed = 2.5
+position_smoothing_speed = 10.0
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 position = Vector2(0, -360)
@@ -138,3 +137,7 @@ bird_scene = ExtResource("10_7hu4i")
 
 [node name="BirdTimer" type="Timer" parent="GameManager"]
 one_shot = true
+
+[node name="RunTimer" type="Timer" parent="GameManager"]
+wait_time = 3.0
+autostart = true

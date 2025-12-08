@@ -1,17 +1,24 @@
 extends Node2D
 
 @onready var bird_timer: Timer = $BirdTimer
+@onready var run_timer: Timer = $RunTimer
 
 @export var player: JetpackJoyride.Player
 @export var warning_scene: PackedScene
 @export var bird_scene: PackedScene
 
 var warnings: Array[JetpackJoyride.Warning] = []
+var initial_x
 
 func _ready():
     bird_timer.timeout.connect(spawn_bird_warning)
     bird_timer.start()
+    run_timer.timeout.connect(increase_speed)
     player.died.connect(game_over)
+    initial_x = player.position.x
+
+func increase_speed():
+    player.run_speed += 10
 
 func reset_bird_timer():
     bird_timer.wait_time = randf_range(0, 5)
@@ -19,9 +26,8 @@ func reset_bird_timer():
 
 func spawn_bird_warning():
     var warning: JetpackJoyride.Warning = warning_scene.instantiate()
-    warning.position = Vector2(player.position.x + 968, randf_range(-300, 275))
-    warning.move_speed = player.run_speed
-    warning.target = player
+    warning.position = Vector2(player.position.x + 1100, randf_range(-300, 275))
+    warning.player = player
     warning.warning_end.connect(spawn_bird)
     warnings.append(warning)
     add_child(warning)
@@ -49,3 +55,4 @@ func game_over():
         (node as PhysicsBody2D).collision_layer = 0
         (node as PhysicsBody2D).collision_mask = 0
     bird_timer.stop()
+    print(player.position.x - initial_x)
