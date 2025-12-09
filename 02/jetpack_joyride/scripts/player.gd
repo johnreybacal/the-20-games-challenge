@@ -38,8 +38,7 @@ func _physics_process(delta: float) -> void:
         var collision = get_slide_collision(i)
         var collider: Node2D = collision.get_collider()
         if collider.is_in_group("obstacle"):
-            collider.collision_mask = 0
-            collider.collision_layer = 0
+            collision_mask = 2 # Only detect floor on death
             if is_playing:
                 is_playing = false
                 is_flying = false

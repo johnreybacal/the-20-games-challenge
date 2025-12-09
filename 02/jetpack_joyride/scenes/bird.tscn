@@ -63,6 +63,7 @@ animations = [{
 }]
 
 [node name="Bird" type="RigidBody2D" groups=["obstacle"]]
+collision_mask = 0
 gravity_scale = 0.0
 constant_force = Vector2(-500, 0)
 

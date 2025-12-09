@@ -4,7 +4,7 @@ extends RigidBody2D
 @onready var wait_timer: Timer = $WaitTimer
 @onready var warning_timer: Timer = $WarningTimer
 
-signal warning_end(this)
+signal warning_end(this: JetpackJoyride.Warning)
 
 var is_imminent = false
 var player: JetpackJoyride.Player

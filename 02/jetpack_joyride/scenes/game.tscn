@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3qc3vlylhi6e"]
+[gd_scene load_steps=15 format=3 uid="uid://c3qc3vlylhi6e"]
 
 [ext_resource type="PackedScene" uid="uid://hqugdtlgloud" path="res://02/jetpack_joyride/scenes/player.tscn" id="1_ix8h4"]
 [ext_resource type="Texture2D" uid="uid://dpivnclj7y17h" path="res://02/jetpack_joyride/assets/sprites/floor.png" id="2_ww2wc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cd4evaqd6xpop" path="res://02/jetpack_joyride/scripts/game_manager.gd" id="8_aoo7s"]
 [ext_resource type="PackedScene" uid="uid://c0o0uy36y4td8" path="res://02/jetpack_joyride/scenes/warning.tscn" id="9_m4jro"]
 [ext_resource type="PackedScene" uid="uid://dqv3oydrn6xca" path="res://02/jetpack_joyride/scenes/bird.tscn" id="10_7hu4i"]
+[ext_resource type="PackedScene" uid="uid://bwjm6ujs1teg2" path="res://02/jetpack_joyride/scenes/boulder.tscn" id="11_7hu4i"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ix8h4"]
 
@@ -20,21 +21,39 @@ polygon = PackedVector2Array(-226, 62, -228, -12, 101, -13, 101, 62)
 
 [node name="Node" type="Node"]
 
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("8_aoo7s")
+player = NodePath("../Player")
+warning_scene = ExtResource("9_m4jro")
+bird_scene = ExtResource("10_7hu4i")
+boulder_scene = ExtResource("11_7hu4i")
+
+[node name="BirdTimer" type="Timer" parent="GameManager"]
+one_shot = true
+autostart = true
+
+[node name="BoulderTimer" type="Timer" parent="GameManager"]
+wait_time = 2.0
+one_shot = true
+
+[node name="RunTimer" type="Timer" parent="GameManager"]
+wait_time = 3.0
+autostart = true
+
 [node name="Player" parent="." instance=ExtResource("1_ix8h4")]
-position = Vector2(-483, 269)
-collision_mask = 3
-platform_floor_layers = 2
-thrust = -750.0
+position = Vector2(-487, 247)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 z_index = 10
-position = Vector2(483, -207)
+position = Vector2(487, -185)
 limit_top = -360
 limit_bottom = 360
 position_smoothing_speed = 10.0
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 position = Vector2(0, -360)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
 rotation = 3.1415927
@@ -129,16 +148,3 @@ z_index = 1
 position = Vector2(-0.9999685, -1.1444092e-05)
 scale = Vector2(3.3385417, 3.3333333)
 texture = ExtResource("3_uuxcq")
-
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("8_aoo7s")
-player = NodePath("../Player")
-warning_scene = ExtResource("9_m4jro")
-bird_scene = ExtResource("10_7hu4i")
-
-[node name="BirdTimer" type="Timer" parent="GameManager"]
-one_shot = true
-
-[node name="RunTimer" type="Timer" parent="GameManager"]
-wait_time = 3.0
-autostart = true

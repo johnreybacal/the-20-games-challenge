@@ -198,6 +198,8 @@ collision_friction = 0.5
 collision_bounce = 0.5
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 3
+platform_floor_layers = 2
 script = ExtResource("1_tul4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

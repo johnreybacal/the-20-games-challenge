@@ -12,7 +12,11 @@ The game features a character with a machine-gun jetpack. When holding the input
      - `lerp` transition values by percentage / ease in
  - `get_gravity`: uses calculated gravity from project and Area2D gravity overrides
  - [`GPUParticles2D` only collides against `LightOcluder2D`](https://forum.godotengine.org/t/how-to-make-particles2d-collide-with-collisionshape2d-and-tilemap/95813/4?u=johnreybacal)
-
+ - Physics material override for `RigidBody2D`
+   - bounce!!!
+ - Using `Callable` to bind a parameter
+   - Connecting a signal with no argument to a method that has a parameter
+      - Used `Callable.bind` to bind the needed argument
 
 ## TODO
  - UI
@@ -24,7 +28,10 @@ The game features a character with a machine-gun jetpack. When holding the input
    - ~~missile birds~~
      - ~~lock on and warning~~
    - running animal
+     - replaced with rolling (and bouncing) boulder instead
    - thorns
+ - despawn obstacles
+   - after certain time / after leaving camera
 
 
 ## Groups
@@ -80,6 +87,13 @@ The game features a character with a machine-gun jetpack. When holding the input
      - higher Z index
  - Adjust player movement
  - Add more leaf particle
+### 2025-12-09
+ - Added rolling boulder that bounces when spawned at height
+   - Used flappy bird sprite temporarily, can't find boulder sprite
+ - Reorganized collision layers/masks so that bird and boulders won't hit each other
+ - On death, player will only scan for floor
+   - removed setting of layer and mask of obstacles to 0
+     - Boulder relies on floor
 
 
 
