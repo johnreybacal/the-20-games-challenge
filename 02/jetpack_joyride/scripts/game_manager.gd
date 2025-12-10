@@ -15,9 +15,11 @@ var initial_x
 
 func _ready():
     bird_timer.timeout.connect(Callable(spawn_warning).bind(spawn_bird))
+    bird_timer.timeout.connect(reset_bird_timer)
     bird_timer.start()
 
     boulder_timer.timeout.connect(Callable(spawn_warning).bind(spawn_boulder))
+    boulder_timer.timeout.connect(reset_boulder_timer)
     boulder_timer.start()
 
     run_timer.timeout.connect(increase_speed)
@@ -31,7 +33,7 @@ func increase_speed():
 
 func spawn_warning(callable: Callable):
     var warning: JetpackJoyride.Warning = warning_scene.instantiate()
-    var y = randf_range(player.position.y - 150, player.position.y + 150)
+    var y = randf_range(player.position.y - 250, player.position.y + 250)
     y = clampf(y, -333, 269)
     
     warning.position = Vector2(player.position.x + 1100, y)
@@ -48,15 +50,17 @@ func spawn_bird(warning: JetpackJoyride.Warning):
     bird.position = Vector2(warning.position.x + 200, warning.position.y)
     add_child(bird)
 
-    bird_timer.wait_time = randf_range(0, 2)
-    bird_timer.start()
-
 func spawn_boulder(warning: JetpackJoyride.Warning):
     var boulder: Node2D = boulder_scene.instantiate()
     boulder.position = Vector2(warning.position.x + 200, warning.position.y)
     add_child(boulder)
 
-    boulder_timer.wait_time = randf_range(2, 4)
+func reset_bird_timer():
+    bird_timer.wait_time = randf_range(2, 5)
+    bird_timer.start()
+
+func reset_boulder_timer():
+    boulder_timer.wait_time = randf_range(4, 8)
     boulder_timer.start()
 
 func free_warning(warning: JetpackJoyride.Warning):

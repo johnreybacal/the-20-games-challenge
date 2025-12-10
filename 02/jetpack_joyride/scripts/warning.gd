@@ -19,17 +19,19 @@ func _physics_process(_delta: float) -> void:
     if not player:
         return
 
-    var axis = 0
+    var velocity_y = 0
 
     if not is_imminent:
         var diff = position.distance_to(player.position)
         var slow_diff: float = 20
-        axis = 1 if position.y < player.position.y else -1
-
+        var axis: float = 1 if position.y < player.position.y else -1
+        
         if diff < slow_diff:
             axis = min(diff / slow_diff, abs(axis)) * axis
 
-    linear_velocity = Vector2(player.run_speed, axis * 300 * .5)
+        velocity_y = lerp(linear_velocity.y, axis * 250, .05)
+
+    linear_velocity = Vector2(player.run_speed, velocity_y)
 
 
 func _on_wait_timer_timeout() -> void:
