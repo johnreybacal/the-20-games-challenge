@@ -17,6 +17,7 @@ The game features a character with a machine-gun jetpack. When holding the input
  - Using `Callable` to bind a parameter
    - Connecting a signal with no argument to a method that has a parameter
       - Used `Callable.bind` to bind the needed argument
+ - VisibleOnScreenNotifier2D: pretty straightforward
 
 ## TODO
  - UI
@@ -30,8 +31,8 @@ The game features a character with a machine-gun jetpack. When holding the input
    - running animal
      - replaced with rolling (and bouncing) boulder instead
    - thorns
- - despawn obstacles
-   - after certain time / after leaving camera
+ - ~~despawn obstacles~~
+   - ~~after certain time / after leaving camera~~
 
 
 ## Groups
@@ -94,7 +95,10 @@ The game features a character with a machine-gun jetpack. When holding the input
  - On death, player will only scan for floor
    - removed setting of layer and mask of obstacles to 0
      - Boulder relies on floor
-
+### 2025-12-10
+ - Adjustments on obstacles
+ - Cleanup obstacle when leaving screen
+   - Attached to obstacle on spawn instead of adding `VisibleOnScreenNotifier2D` for each obstacle, Bird doesn't even have a script
 
 
 ## Credits

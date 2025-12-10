@@ -45,23 +45,37 @@ func spawn_warning(callable: Callable):
     warnings.append(warning)
     add_child(warning)
 
+
 func spawn_bird(warning: JetpackJoyride.Warning):
     var bird: Node2D = bird_scene.instantiate()
     bird.position = Vector2(warning.position.x + 200, warning.position.y)
     add_child(bird)
+    free_on_screen_exit(bird)
+
 
 func spawn_boulder(warning: JetpackJoyride.Warning):
     var boulder: Node2D = boulder_scene.instantiate()
     boulder.position = Vector2(warning.position.x + 200, warning.position.y)
     add_child(boulder)
+    free_on_screen_exit(boulder)
+
 
 func reset_bird_timer():
     bird_timer.wait_time = randf_range(2, 5)
     bird_timer.start()
 
+
 func reset_boulder_timer():
     boulder_timer.wait_time = randf_range(4, 8)
     boulder_timer.start()
+
+
+func free_on_screen_exit(node: Node2D):
+    var notifier = VisibleOnScreenNotifier2D.new()
+    notifier.screen_exited.connect(node.queue_free)
+    notifier.position = Vector2.ZERO
+    node.add_child(notifier)
+
 
 func free_warning(warning: JetpackJoyride.Warning):
     var index_to_remove = -1
@@ -72,6 +86,7 @@ func free_warning(warning: JetpackJoyride.Warning):
     if index_to_remove != -1:
         warnings.remove_at(index_to_remove)
         warning.queue_free()
+
 
 func game_over():
     for warning in warnings:
