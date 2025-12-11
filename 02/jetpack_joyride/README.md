@@ -20,17 +20,17 @@ The game features a character with a machine-gun jetpack. When holding the input
  - VisibleOnScreenNotifier2D: pretty straightforward
 
 ## TODO
- - UI
-   - paused
-   - game over
-   - score: distance
-     - high score
+ - ~~UI~~
+   - ~~paused~~
+   - ~~game over~~
+   - ~~score: distance~~
+     - ~~high score~~
  - obstacles
    - ~~missile birds~~
      - ~~lock on and warning~~
-   - running animal
-     - replaced with rolling (and bouncing) boulder instead
-   - thorns
+   - ~~running animal~~
+     - ~~replaced with rolling (and bouncing) boulder instead~~
+   - thorns (eh)
  - ~~despawn obstacles~~
    - ~~after certain time / after leaving camera~~
 
@@ -99,9 +99,13 @@ The game features a character with a machine-gun jetpack. When holding the input
  - Adjustments on obstacles
  - Cleanup obstacle when leaving screen
    - Attached to obstacle on spawn instead of adding `VisibleOnScreenNotifier2D` for each obstacle, Bird doesn't even have a script
-
+### 2025-12-11
+ - Add UI: game over, pause, score, high score, restart, quit
+   - reused HUD scene and script from breakout
+   - custom font
 
 ## Credits
  - Jungle Pack: https://jesse-m.itch.io/jungle-pack
  - Bird: https://ankousse26.itch.io/bird-flying-pixel-art-animation-free
  - Warning Sign by PixyFantasyStudios: https://pixyfantasystudios.itch.io/warning-sign
+ - peaberry-pixel-font: https://emhuo.itch.io/peaberry-pixel-font

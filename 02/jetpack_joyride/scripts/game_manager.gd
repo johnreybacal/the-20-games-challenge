@@ -8,10 +8,12 @@ extends Node2D
 @export var warning_scene: PackedScene
 @export var bird_scene: PackedScene
 @export var boulder_scene: PackedScene
+@export var hud: JetpackJoyride.Hud
 
 var warnings: Array[JetpackJoyride.Warning] = []
 var initial_x
 
+const SESSION_HIGH_SCORE_KEY = "02_jetpack_joyride"
 
 func _ready():
     bird_timer.timeout.connect(Callable(spawn_warning).bind(spawn_bird))
@@ -26,6 +28,7 @@ func _ready():
 
     player.died.connect(game_over)
     initial_x = player.position.x
+    
 
 func increase_speed():
     player.run_speed += 10
@@ -95,4 +98,11 @@ func game_over():
 
     bird_timer.stop()
     boulder_timer.stop()
-    print(player.position.x - initial_x)
+
+    var score = (player.position.x - initial_x) / 33.3
+    var high_score = Global.session_data.get(SESSION_HIGH_SCORE_KEY, 0.0)
+
+    hud.on_game_over(score, high_score)
+    
+    if score > high_score:
+        high_score = Global.session_data.set(SESSION_HIGH_SCORE_KEY, score)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3qc3vlylhi6e"]
+[gd_scene load_steps=16 format=3 uid="uid://c3qc3vlylhi6e"]
 
+[ext_resource type="PackedScene" uid="uid://b2gjobgxmrs3i" path="res://02/jetpack_joyride/scenes/hud.tscn" id="1_avgvx"]
 [ext_resource type="PackedScene" uid="uid://hqugdtlgloud" path="res://02/jetpack_joyride/scenes/player.tscn" id="1_ix8h4"]
 [ext_resource type="Texture2D" uid="uid://dpivnclj7y17h" path="res://02/jetpack_joyride/assets/sprites/floor.png" id="2_ww2wc"]
 [ext_resource type="Texture2D" uid="uid://dsopowbule8ih" path="res://02/jetpack_joyride/assets/sprites/plx-3.png" id="3_u3ts5"]
@@ -21,12 +22,17 @@ polygon = PackedVector2Array(-226, 62, -228, -12, 101, -13, 101, 62)
 
 [node name="Node" type="Node"]
 
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_avgvx")]
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("player", "hud")]
 script = ExtResource("8_aoo7s")
 player = NodePath("../Player")
 warning_scene = ExtResource("9_m4jro")
 bird_scene = ExtResource("10_7hu4i")
 boulder_scene = ExtResource("11_7hu4i")
+hud = NodePath("../CanvasLayer/HUD")
 
 [node name="BirdTimer" type="Timer" parent="GameManager"]
 one_shot = true

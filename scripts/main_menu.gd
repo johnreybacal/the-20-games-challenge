@@ -25,6 +25,12 @@ var game_details: Array[GameDetail] = [
             "Atari’s first successful game (Pong) was massively successful, but many companies made clones of the game, which eroded Atari’s profits. Their response was to make new and innovative games in order to stay ahead of the competition. Breakout was a direct descendent of Pong, but was designed for one player instead of two. It came out in 1976.",
             false,
             "res://02/breakout/scenes/game.tscn"
+        ),
+        GameDetail.make(
+            "Jetpack Joyride",
+            "Jetpack Joyride is a side-scrolling endless mobile game from 2011. It only requires a single input button to control the player. The game is fairly complex overall, though the basic premise is very simple. The game came from the same studio that made Fruit Ninja.\nThe game features a character with a machine-gun jetpack. When holding the input, the player will rise (and destroy everything below!) When the input is released, the character will fall. The character can run on the ground if they reach the bottom of the screen.",
+            false,
+            "res://02/jetpack_joyride/scenes/game.tscn"
         )
     ]
 

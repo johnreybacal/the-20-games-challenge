@@ -53,3 +53,5 @@ These items are applicable on development of main menu. More entries in README.m
  - Persist main menu state (session only)
 ### 2025-12-05
  - Added breakout game
+### 2025-12-11
+ - Added jetpack joyride game

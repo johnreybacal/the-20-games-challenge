@@ -43,7 +43,6 @@ item_0/text = "01: Pong"
 item_1/text = "01: Flappy Bird"
 item_2/text = "02: Breakout"
 item_3/text = "02: Jetpack Joyride"
-item_3/disabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

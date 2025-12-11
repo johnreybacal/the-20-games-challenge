@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2gjobgxmrs3i"]
+
+[ext_resource type="FontFile" uid="uid://cgmjhux77baxf" path="res://assets/fonts/PeaberryMono.ttf" id="1_4lg11"]
+[ext_resource type="Script" uid="uid://dcb16opq2u6h6" path="res://02/jetpack_joyride/scripts/hud.gd" id="2_ve1w5"]
+
+[sub_resource type="Theme" id="Theme_ve1w5"]
+default_font = ExtResource("1_4lg11")
+
+[node name="HUD" type="Control"]
+process_mode = 3
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ve1w5")
+script = ExtResource("2_ve1w5")
+
+[node name="PausePanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -70.0
+offset_right = 97.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PausePanel/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PausePanel/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "RESUME"
+
+[node name="QuitButton" type="Button" parent="PausePanel/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "QUIT
+"
+
+[node name="GameOverPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -123.0
+offset_right = 250.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -202.0
+offset_right = 146.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="GameOverPanel/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="StateLabel" type="Label" parent="GameOverPanel/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverPanel/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="GameOverPanel/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "QUIT
+"
+
+[node name="PauseButton" type="Button" parent="."]
+layout_mode = 1
+offset_right = 54.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 24
+text = "PAUSE"
+flat = true
+
+[connection signal="button_down" from="PausePanel/Container/ResumeButton" to="." method="_on_resume_button_button_down"]
+[connection signal="button_down" from="PausePanel/Container/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="button_down" from="GameOverPanel/Container/RestartButton" to="." method="_on_restart_button_button_down"]
+[connection signal="button_down" from="GameOverPanel/Container/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="button_down" from="PauseButton" to="." method="_on_pause_button_button_down"]
