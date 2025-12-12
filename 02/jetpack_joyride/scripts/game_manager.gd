@@ -59,6 +59,9 @@ func spawn_bird(warning: JetpackJoyride.Warning):
 func spawn_boulder(warning: JetpackJoyride.Warning):
     var boulder: Node2D = boulder_scene.instantiate()
     boulder.position = Vector2(warning.position.x + 200, warning.position.y)
+    boulder.initial_velocity = Vector2(-600 + player.run_speed, -300 + (warning.position.y * -1))
+    if boulder.initial_velocity.x > 0:
+        boulder.constant_rotation = 360
     add_child(boulder)
     free_on_screen_exit(boulder)
 

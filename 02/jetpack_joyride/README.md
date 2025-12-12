@@ -18,6 +18,8 @@ The game features a character with a machine-gun jetpack. When holding the input
    - Connecting a signal with no argument to a method that has a parameter
       - Used `Callable.bind` to bind the needed argument
  - VisibleOnScreenNotifier2D: pretty straightforward
+ - `AudioStreamPlayer2D`'s attenuation 
+   - Used `AudioStreamPlayer` instead
 
 ## TODO
  - ~~UI~~
@@ -105,6 +107,10 @@ The game features a character with a machine-gun jetpack. When holding the input
    - custom font
 ### 2025-12-12
  - Add SFX
+ - Adjust boulder initial velocity based on player run_speed to retain bouncing pattern late game
+    - Rotate boulder clockwise when when X velocity is positive
+    - Add upward velocity to eliminate rolling boulder
+      - Adjust based on spawn Y position to not hit game cieling
 
 ## Credits
  - Jungle Pack: https://jesse-m.itch.io/jungle-pack

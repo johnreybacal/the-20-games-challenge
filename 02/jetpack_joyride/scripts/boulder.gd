@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var constant_rotation = -360
-@export var initial_velocity = Vector2(-300, 0)
+@export var initial_velocity = Vector2(-300, -600)
 
 @onready var hit_sfx: AudioStreamPlayer = $HitSfx
 
