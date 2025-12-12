@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqv3oydrn6xca"]
+[gd_scene load_steps=12 format=3 uid="uid://dqv3oydrn6xca"]
 
 [ext_resource type="Texture2D" uid="uid://vqtbjrgna4gm" path="res://02/jetpack_joyride/assets/sprites/bird.png" id="1_33td3"]
+[ext_resource type="AudioStream" uid="uid://cy8wegmcjntxc" path="res://02/jetpack_joyride/assets/audio/crow-sound-94874.mp3" id="2_387ao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_387ao"]
 size = Vector2(55, 18)
@@ -78,3 +79,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_byhoo")
 autoplay = "default"
 frame_progress = 0.36406898
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_387ao")
+autoplay = true

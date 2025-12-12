@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwjm6ujs1teg2"]
+[gd_scene load_steps=6 format=3 uid="uid://bwjm6ujs1teg2"]
 
 [ext_resource type="Texture2D" uid="uid://2skvj16ojtdj" path="res://01/flappy_bird/assets/sprites/yellowbird-midflap.png" id="1_hjv63"]
 [ext_resource type="Script" uid="uid://cg3i1eabrifpb" path="res://02/jetpack_joyride/scripts/boulder.gd" id="1_t028h"]
+[ext_resource type="AudioStream" uid="uid://bq54yxjp06tjn" path="res://01/flappy_bird/assets/audio/hit.ogg" id="3_1rqhd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t028h"]
 bounce = 1.0
@@ -13,6 +14,8 @@ radius = 64.00781
 z_index = 10
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_t028h")
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_t028h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,3 +26,8 @@ texture_filter = 1
 position = Vector2(4.7683716e-07, 0)
 scale = Vector2(4.625, 4.625)
 texture = ExtResource("1_hjv63")
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1rqhd")
+volume_db = -10.0
+pitch_scale = 0.5

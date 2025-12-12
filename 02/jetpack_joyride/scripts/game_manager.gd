@@ -75,9 +75,14 @@ func reset_boulder_timer():
 
 func free_on_screen_exit(node: Node2D):
     var notifier = VisibleOnScreenNotifier2D.new()
-    notifier.screen_exited.connect(node.queue_free)
+    notifier.screen_exited.connect(Callable(free_object_after).bind(node, 1))
     notifier.position = Vector2.ZERO
     node.add_child(notifier)
+
+
+func free_object_after(node: Node2D, seconds: float):
+    await get_tree().create_timer(seconds).timeout
+    node.queue_free()
 
 
 func free_warning(warning: JetpackJoyride.Warning):

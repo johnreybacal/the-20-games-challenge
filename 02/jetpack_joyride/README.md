@@ -103,9 +103,15 @@ The game features a character with a machine-gun jetpack. When holding the input
  - Add UI: game over, pause, score, high score, restart, quit
    - reused HUD scene and script from breakout
    - custom font
+### 2025-12-12
+ - Add SFX
 
 ## Credits
  - Jungle Pack: https://jesse-m.itch.io/jungle-pack
  - Bird: https://ankousse26.itch.io/bird-flying-pixel-art-animation-free
  - Warning Sign by PixyFantasyStudios: https://pixyfantasystudios.itch.io/warning-sign
  - peaberry-pixel-font: https://emhuo.itch.io/peaberry-pixel-font
+ - Jogging outside for marathon training: https://pixabay.com/sound-effects/jogging-outside-for-marathon-training-393099/
+ - FAN (ventilador): https://pixabay.com/sound-effects/fan-ventilador-277725/
+ - crow: https://pixabay.com/sound-effects/crow-sound-94874/
+ - warning: https://pixabay.com/sound-effects/beep-warning-6387/

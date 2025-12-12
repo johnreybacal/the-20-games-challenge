@@ -7,11 +7,18 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var particles: GPUParticles2D = $Particles
 
+@onready var running_sfx: AudioStreamPlayer = $SFX/Running
+@onready var flying_sfx: AudioStreamPlayer = $SFX/Flying
+@onready var hit_sfx: AudioStreamPlayer = $SFX/Hit
+
 signal died()
 
 var is_flying = false
 var is_playing = true
 var is_dying = false
+
+func _ready():
+    died.connect(play_hit_sfx)
 
 func _input(event: InputEvent) -> void:
     if not is_playing:
@@ -50,6 +57,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
+    play_sfx()
     play_animation()
     particles.emitting = is_flying
 
@@ -67,3 +75,30 @@ func play_animation():
             animated_sprite_2d.play("died")
         else:
             animated_sprite_2d.play("die")
+
+func play_sfx():
+    if is_playing:
+        if is_on_floor():
+            play_running_sfx()
+        else:
+            running_sfx.stop()
+        if is_flying:
+            play_flying_sfx()
+        else:
+            flying_sfx.stop()
+    if is_dying and is_on_floor():
+        hit_sfx.pitch_scale = 0.3
+        hit_sfx.play()
+
+func play_running_sfx():
+    if not running_sfx.playing:
+        running_sfx.play()
+
+func play_flying_sfx():
+    if not flying_sfx.playing:
+        flying_sfx.play()
+
+func play_hit_sfx():
+    running_sfx.stop()
+    flying_sfx.stop()
+    hit_sfx.play()

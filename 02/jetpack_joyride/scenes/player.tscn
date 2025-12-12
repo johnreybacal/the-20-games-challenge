@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://hqugdtlgloud"]
+[gd_scene load_steps=33 format=3 uid="uid://hqugdtlgloud"]
 
 [ext_resource type="Script" uid="uid://ctm8mfoucja2v" path="res://02/jetpack_joyride/scripts/player.gd" id="1_tul4c"]
 [ext_resource type="Texture2D" uid="uid://3xm7pjtdkc5t" path="res://02/jetpack_joyride/assets/sprites/run.png" id="2_8iksn"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b2q4sy0ke7g2x" path="res://02/jetpack_joyride/assets/sprites/fall.png" id="2_vyp83"]
 [ext_resource type="Texture2D" uid="uid://cu2rvpw4ct4lk" path="res://02/jetpack_joyride/assets/sprites/jump.png" id="2_w85ty"]
 [ext_resource type="Texture2D" uid="uid://dt41fi7v28dws" path="res://02/jetpack_joyride/assets/sprites/leaf.png" id="5_142df"]
+[ext_resource type="AudioStream" uid="uid://du0iseiiyob32" path="res://02/jetpack_joyride/assets/audio/jogging-outside-for-marathon-training-393099.mp3" id="7_2c1n3"]
+[ext_resource type="AudioStream" uid="uid://bk1j0bv20t704" path="res://02/jetpack_joyride/assets/audio/fan-ventilador-277725.mp3" id="8_17jd6"]
+[ext_resource type="AudioStream" uid="uid://bq54yxjp06tjn" path="res://01/flappy_bird/assets/audio/hit.ogg" id="9_5k72v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ger1x"]
 size = Vector2(34, 96)
@@ -146,7 +149,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"running",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t7joc"]
@@ -213,6 +216,7 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_vw8d7")
 animation = &"running"
 autoplay = "running"
+frame_progress = 0.071157545
 
 [node name="Particles" type="GPUParticles2D" parent="."]
 z_index = 10
@@ -223,3 +227,21 @@ emitting = false
 amount = 75
 texture = ExtResource("5_142df")
 process_material = SubResource("ParticleProcessMaterial_vw8d7")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Running" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_2c1n3")
+volume_db = -12.5
+parameters/looping = false
+
+[node name="Flying" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_17jd6")
+volume_db = 5.0
+parameters/looping = false
+
+[node name="Hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_5k72v")
+volume_db = -10.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

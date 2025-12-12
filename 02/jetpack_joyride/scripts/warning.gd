@@ -3,6 +3,7 @@ extends RigidBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wait_timer: Timer = $WaitTimer
 @onready var warning_timer: Timer = $WarningTimer
+@onready var imminent_sfx: AudioStreamPlayer = $ImminentSfx
 
 signal warning_end(this: JetpackJoyride.Warning)
 
@@ -42,6 +43,7 @@ func _on_wait_timer_timeout() -> void:
     z_index = 15
     animated_sprite_2d.modulate.a = 1
     is_imminent = true
+    imminent_sfx.play()
 
 func _on_warning_timer_timeout() -> void:
     warning_end.emit(self)

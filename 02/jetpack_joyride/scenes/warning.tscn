@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0o0uy36y4td8"]
+[gd_scene load_steps=11 format=3 uid="uid://c0o0uy36y4td8"]
 
 [ext_resource type="Texture2D" uid="uid://ddp54xtqc3iko" path="res://02/jetpack_joyride/assets/sprites/warning.png" id="1_bf6kj"]
 [ext_resource type="Script" uid="uid://bkkp40ilhypv5" path="res://02/jetpack_joyride/scripts/warning.gd" id="2_laytx"]
+[ext_resource type="AudioStream" uid="uid://8f7of8scwjux" path="res://02/jetpack_joyride/assets/audio/beep-warning-6387.mp3" id="3_tpvfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_laytx"]
 size = Vector2(46, 48)
@@ -78,3 +79,8 @@ one_shot = true
 [node name="WaitTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="ImminentSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tpvfi")
+volume_db = -15.0
+pitch_scale = 1.5
